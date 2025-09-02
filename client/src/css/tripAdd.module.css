@@ -1,0 +1,572 @@
+
+.formContainer {
+  position: fixed;
+  top: 10vh;
+  left: 0;
+  padding: 16px;
+  background-color: #fdfdfb;
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(38, 70, 83, 0.1);
+  margin: 0vh auto;
+  font-family: 'Poppins', sans-serif;
+  z-index: 999;
+  width: 100%; 
+  overflow: hidden;
+  min-height: 65vh;
+}
+
+.animationWrapper {
+  position: relative;
+  min-height: 50vh; /* dostosuj do najwyższego kroku */ 
+}
+
+
+/* Opcjonalnie: kontener, by utrzymać pozycje */
+.stepContainer {
+  position: relative;
+}
+
+
+/* Nagłówek formularza */
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3vh;
+}
+
+
+
+/* Przycisk 'Dalej' */
+
+.btn-next-wrapper {
+  position: absolute;
+  bottom: 4vh;
+  right: 5%;
+  text-align: right;
+}
+
+.btn-next {
+  cursor: pointer;
+  font-weight: 500;
+  color: #333;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+/* Przycisk 'Wstecz' */
+
+.btn-back-top {
+  color: #333;
+  font-weight: 500;
+  font-size: 1.1rem;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+/* Przycisk 'x (zamknij) ' */
+
+.close-btn {
+  font-size: 24px;
+  color: #264653;
+  cursor: pointer;
+}
+
+
+/* Pola z etykietami floating-label */
+
+.floating-label {
+  position: relative;
+  margin-top: 5vh;
+}
+
+.floating-label input,
+.floating-label textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  outline: none;
+  font-family: inherit;
+  color:#666
+}
+
+
+/* Tylko dla textarea – większa wysokość + opcjonalna możliwość rozciągania */
+.floating-label textarea {
+  margin-top: 1vh;
+  height: 180px;
+  resize: none; 
+  line-height: 1.6;
+}
+
+.floating-label label {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 0.9rem;
+  background: #fff;
+  padding: 0 5px;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+/* Aktywacja "floating label" przy focusie lub zawartości */
+.floating-label input:focus + label,
+.floating-label input:not(:placeholder-shown) + label,
+.floating-label textarea:focus + label,
+.floating-label textarea:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 8px;
+  font-size: 0.75rem;
+  color: #2a9d8f;
+}
+
+.char-counter {
+  text-align: left;
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 4px;
+  margin-left: 2%;  
+  font-family: monospace; 
+}
+
+
+
+div.allCities{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 24vh;
+}
+
+.optionalAreaText{
+  color: #888; /* jaśniejszy szary lub inny odcień */
+  font-style: italic;
+  font-weight: normal;
+}
+
+/* Miasta pośrednie */
+
+p.middleCityDescription{
+  font-size: .9rem; 
+  margin: 5vh 0 1vh 0; 
+  text-align: left; 
+  color: #2a9d8f
+}
+
+.cityMiddleAdd{
+  width: 30%; 
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+  cursor: pointer;
+}
+
+
+.city-line-wrapper{
+  margin-top: 0vh;
+  width: 100%;
+}
+
+
+.city-line {  
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color:#666;
+  letter-spacing: .5px;
+  gap: 10%; /* odstęp między X a resztą */
+}
+
+.city-line input{
+  width: 100%;
+  padding: 10px 12px;
+  font-size: .9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  outline: none;
+}
+
+.city-label {
+  display: inline-block;
+}
+
+.city-remove {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #b00020;
+}
+
+.middle-city-panel {
+  margin-top: 1.5vh;
+}
+
+.add-middle-city {
+  font-size: 0.9rem;
+  color:#666;
+  cursor: pointer;
+}
+
+
+/* dodawanie zdjęcia */
+
+.buttonAddImageWrapper{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 5%;
+  margin-top: 3vh;
+  height: 8vh;
+}
+
+.fileUpload {
+  display: block;
+  width: 50%;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  color: #666;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: .5vh;
+  transition: background-color 0.3s ease;
+}
+
+.fileUpload:hover {
+  background-color: #efefef;
+}
+
+.imagePreview img {
+  width: 50px;
+  height: 50px;
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+/* Kontakty */
+
+.contactPanel{
+  margin-top: 3vh;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  margin-top: 1.5vh;
+}
+
+.contact input {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  color:#666
+}
+
+.contact input:focus{
+  outline: none;          
+}
+
+
+
+/* Przycisk dodawania przejazdu */
+
+.btn-accept-trip-wrapper {
+  text-align: center;
+  margin-top: 5vh;
+}
+
+.btn-accept-form {
+  width: 100%;
+  font-size: 0.95rem;
+  padding: 12px 24px;
+  font-weight: 600;
+  background-color: #2a9d8f;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-accept-form:hover {
+  background-color: #21867a;
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+}
+
+.btn-accept-form.hide {
+  display: none;
+}
+
+.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.fade-in {
+  animation: fadeInMove 0.4s ease forwards;
+}
+
+@keyframes fadeInMove {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+
+/* --- RESPONSYWNOŚĆ --- */
+
+/* Małe urządzenia (telefony) */
+@media (max-width: 390px) {
+
+  .formContainer {
+    padding: 12px;
+    min-height: 70vh;
+    box-shadow: none;
+  }
+
+  .form-header {
+    margin-bottom: 1vh;
+  }
+
+  .btn-next,
+  .btn-back-top {
+    font-size: 1rem;
+  }
+
+  .close-btn {
+    font-size: 20px;
+  }
+
+  .floating-label input,
+  .floating-label textarea {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .floating-label label {
+    font-size: 0.8rem;
+  }
+
+  .floating-label textarea {
+    height: 140px;
+  }
+
+  .char-counter {
+    font-size: 0.7rem;
+  }
+
+  .city-line {
+    gap: 5%;
+    font-size: 0.85rem;
+  }
+
+  .city-remove {
+    font-size: 1.2rem;
+  }
+
+  .fileUpload {
+    width: 50%;
+    font-size: 0.9rem;
+  }
+
+  .imagePreview img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contact input {
+    font-size: 0.85rem;
+    padding: 7px;
+  }
+
+  .btn-accept-form {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+
+  .contactPanel{
+    margin-top: 2vh;
+  }
+
+  .contact {
+    gap: 1vh;
+  }
+}
+
+/* Średnie urządzenia (tablety) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .formContainer {
+    padding: 16px 24px;
+    min-height: 70vh;
+    width: 90%;
+  }
+
+  .floating-label input,
+  .floating-label textarea {
+    font-size: 0.9rem;
+  }
+
+  .floating-label textarea {
+    height: 160px;
+  }
+
+  .fileUpload {
+    width: 70%;
+  }
+
+  .imagePreview img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .btn-accept-form {
+    font-size: 0.93rem;
+    padding: 11px 20px;
+  }
+}
+
+
+
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  
+    .formContainer {
+    position: absolute;
+    top: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    min-height: auto;
+    height: auto;
+    height: 40vh;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+ 
+
+  .step{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .floating-label {
+    margin-top: 4vh;
+    width: 40%;
+  }
+
+  .floating-label textArea{
+    height: 100px;
+  }
+
+  .form-header{
+    margin-bottom: 0;
+  }
+
+
+}
+
+
+
+
+
+/* Duże ekrany (desktopy) */
+@media (min-width: 1024px) {
+
+  .formContainer {
+    width: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 8px;
+    height: 80vh;
+  }
+
+  .step{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .floating-label {
+    width: 80%;
+  }
+
+  .floating-label  textArea{
+    padding: 0;
+  
+  }
+
+  .optional-cities{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .middle-city-panel{
+    width: 100%;
+  }
+
+  .city-line{
+    width: 100%;
+  }
+
+  p.middleCityDescription{ 
+    margin: 5vh 0 1vh 0; 
+    width: 100%;
+    text-align: center;
+    color: #2a9d8f;
+  }
+
+  .buttonAddImageWrapper {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+  }
+
+  .fileUpload{
+    width: 40%;
+    font-size: .8rem;
+  }
+
+  .city-line {
+    gap: 15%;
+  }
+}

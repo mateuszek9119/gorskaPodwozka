@@ -1,0 +1,99 @@
+.sectionSearchTrip {
+  margin-top: 5vh;
+}
+
+.searchTripsForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 1vh;
+  gap: 0.3rem;
+}
+
+.searchTripsInput {
+  margin: 1vh 0 2vh 0;
+  background-color: #fffffa;
+  padding: 0.75rem;
+  width: 50%;
+  min-width: 200px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.searchTripsInput:focus {
+  outline: none;
+  border-color: var(--color-primary, #2a9d8f);
+  box-shadow: 0 0 5px rgba(42, 157, 143, 0.5);
+}
+
+.searchTripBtn {
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #2a9d8f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.searchTripBtn:hover {
+  background-color: #21867a;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+
+/* Mobile first: default is mobile */
+
+@media (max-width: 480px) {
+  .searchTripsForm {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .searchTripsInput {
+    width: 80%;
+    max-width: 90%;
+    font-size: 0.875rem;
+  }
+
+  .searchTripBtn {
+    width: 80%;
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* Tablet up */
+
+@media (min-width: 600px) {
+  .searchTripsForm {
+    flex-wrap: nowrap;
+  }
+
+  .searchTripsInput {
+    width: 50%;
+    font-size: 1rem;
+  }
+
+  .searchTripBtn {
+    width: auto;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+}
+
+/* Info about results */
+
+p.messageTripsFound {
+  margin-top: 1vh;
+  font-size: 0.75rem;
+  text-align: left;
+  color: #555;
+}
