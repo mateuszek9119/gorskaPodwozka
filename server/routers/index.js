@@ -95,7 +95,7 @@ router.post("/upload", upload.single('img'), async (req, res) => {
       dateEndTrip: req.body.dateEndTrip,
       userName: req.body.userName,
       //imgPath: `/uploads/${req.file.filename}`, 
-      imgPath: `${process.env.REACT_APP_API_URL}/uploads/${req.file.filename}`,
+      imgPath: `${process.env.ALLOWED_ORIGINS}/uploads/${req.file.filename}`,
       contentType: req.file.mimetype,
       contactPhone: req.body.contactPhone,
       contactInsta: req.body.contactInsta,
