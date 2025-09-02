@@ -19,6 +19,8 @@ const PORT = process.env.PORT || 3001;
 
 // Udostępnienie folderu uploads publicznie pod ścieżką /uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// Udostępnij folder uploads publicznie pod ścieżką /uploads
+
 
 // CORS configuration
 const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [];
