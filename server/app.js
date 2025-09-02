@@ -67,7 +67,7 @@ app.use('/admin', adminRouter);
 app.use('/', express.static(path.join(__dirname, 'public')));
 
 // Obsługuj API na ścieżce /api
-app.get('/', (req, res) => {
+app.get('/api/test', (req, res) => {
   res.json({ message: "Backend działa!" });
 });
 

@@ -26,6 +26,7 @@ function StartPage() {
   const LIMIT = 10;
 
   const fetchTrips = async () => {
+
     setLoading(true);
     setIsSearching(false);
     setPage(1);
