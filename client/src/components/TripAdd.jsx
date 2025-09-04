@@ -4,8 +4,6 @@ import { MdClose } from "react-icons/md"
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import { toast } from 'react-toastify'
 import styles from '../css/tripAdd.module.css'
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import { storage } from '../firebase';  // Zmienna z Firebase Storage
 
 function TripAdd({ fetchTrips, handleCloseForm }) {
   const [showMiddleInput, setShowMiddleInput] = useState(false)
@@ -58,11 +56,9 @@ function TripAdd({ fetchTrips, handleCloseForm }) {
     setMiddleCities(prev => prev.filter(city => city !== cityToRemove))
   }
 
-
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setImg(file);  // Ustawiamy obraz w stanie
-  };
+    setImg(e.target.files[0])
+  }
 
   const handleOnChange = (e) => {
     const { value, name } = e.target
@@ -73,13 +69,7 @@ function TripAdd({ fetchTrips, handleCloseForm }) {
   }
 
   const handleUpload = async (e) => {
-
     e.preventDefault()
-
-    const handleImageChange = (e) => {
-      const file = e.target.files[0];
-      setImg(file);  // Ustawiamy obraz w stanie
-    };
 
     const formData = new FormData()
     formData.append('cityStart', formTrip.cityStart)
@@ -88,65 +78,41 @@ function TripAdd({ fetchTrips, handleCloseForm }) {
     formData.append('dateStartTrip', formTrip.dateStartTrip)
     formData.append('dateEndTrip', formTrip.dateEndTrip)
     formData.append('userName', formTrip.userName)
-   // formData.append('img', img)
+    formData.append('img', img)
     formData.append('contactPhone', formTrip.contactPhone)
     formData.append('contactInsta', formTrip.contactInsta)
     formData.append('contactMessenger', formTrip.contactMessenger)
     formData.append('description', formTrip.description)
 
-    // Dodajemy obrazek do Firebase Storage
-    const storageRef = ref(storage, `images/${img.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, img);
-
     try {
-    // Monitorujemy upload
-    uploadTask.on(
-      'state_changed',
-      null,
-      (error) => {
-        console.error('Błąd przy uploadzie:', error);
-        toast.error("Wystąpił błąd podczas wysyłania zdjęcia.");
-      },
-      () => {
-        // Po zakończeniu pobieramy URL
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          formData.append('img', downloadURL);  // Zapisujemy URL zdjęcia
-          axios.post(`${process.env.REACT_APP_API_URL}/upload`, formData, {
-            headers: {
-              "Content-Type": 'multipart/form-data'
-            }
-          }).then((data) => {
-            if (data.data.success) {
-              toast.success("Przejazd dodany!");
-              fetchTrips();
-              setFormTrip({
-                cityStart: "",
-                cityEnd: "",
-                dateStartTrip: "",
-                dateEndTrip: "",
-                userName: "",
-                contactPhone: "",
-                contactInsta: "",
-                contactMessenger: "",
-                description: ""
-              });
-              setMiddleCities([]);
-              setImg(null);
-              handleCloseForm();
-            }
-          }).catch((err) => {
-            console.error('Błąd podczas dodawania:', err);
-            toast.error("Wystąpił błąd podczas dodawania przejazdu.");
-          });
-        });
+      const data = await axios.post(`${process.env.REACT_APP_API_URL}/upload`, formData, {
+        headers: {
+          "Content-Type": 'multipart/form-data'
+        }
+      })
+      if (data.data.success) {
+        toast.success("Przejazd dodany!")
+        fetchTrips()
+        setFormTrip({
+          cityStart: "",
+          cityEnd: "",
+          dateStartTrip: "",
+          dateEndTrip: "",
+          userName: "",
+          contactPhone: "",
+          contactInsta: "",
+          contactMessenger: "",
+          description: ""
+        })
+        setMiddleCities([])
+        setImg(null)
+        handleCloseForm()
       }
-    );
-  } catch (err) {
-    console.log('Błąd:', err);
-    toast.error("Wystąpił błąd podczas dodawania przejazdu.");
+    } catch (err) {
+      console.log('Błąd:', err)
+      toast.error("Wystąpił błąd podczas dodawania przejazdu.")
+    }
   }
-
-}
 
   const isCurrentStepValid =
     (step === 1 && formTrip.cityStart.trim() && formTrip.cityEnd.trim()) ||

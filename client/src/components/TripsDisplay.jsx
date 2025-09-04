@@ -7,6 +7,7 @@ import { FaFacebookMessenger } from 'react-icons/fa';
 
 
 
+
 function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false, fetchTrips }) {
   
   const [zoomedTripId, setZoomedTripId] = useState(null);
@@ -61,28 +62,28 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
 
             {!isAdmin && (
               <div className="user">
-  <div className="userImageWrapper" onClick={() => toggleZoom(trip.id)}>
-    <img
-      // Zmieniamy sposób generowania URL
-      src={`${process.env.REACT_APP_API_URL}${trip.imgPath}`} // Łączenie z API URL + imgPath
-      alt={trip.userName}
-      className="userImage"
-      loading="lazy"
-    />
-  </div>
+                
+                <div className="userImageWrapper" onClick={() => toggleZoom(trip.id)}>
+                  <img
+                    src={`${trip.imgPath}`}
+                    alt={trip.userName}
+                    className="userImage"
+                    loading="lazy"
+                  />
+                </div>
 
-  <p className="userName">{trip.userName}</p>
+                <p className="userName">{trip.userName}</p>
 
-  {zoomedTripId === trip.id && (
-    <div className="zoomedOverlay" onClick={handleOutsideClick}>
-      <div
-        className="zoomedImage"
-        style={{ backgroundImage: `url(${process.env.REACT_APP_API_URL}${trip.imgPath})` }} // Zastosowanie pełnej ścieżki
-        onClick={(e) => e.stopPropagation()}
-      ></div>
-    </div>
-  )}
-</div>
+                {zoomedTripId === trip.id && (
+                  <div className="zoomedOverlay" onClick={handleOutsideClick}>
+                    <div
+                      className="zoomedImage"
+                      style={{ backgroundImage: `url(${trip.imgPath})` }}
+                      onClick={(e) => e.stopPropagation()}
+                    ></div>
+                  </div>
+                )}
+              </div>
             )}
 
             <div className="trip-dates">
