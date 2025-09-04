@@ -133,7 +133,15 @@ function StartPage() {
 
   return (
     <>
+
+    <div style={{position:'sticky', top: 0, width: '100%'} }>
+           <ToastContainer position="top-right" autoClose={2000} />
+    </div>
+     
     <div className="container" >
+
+   
+
       {/* ⬇️ to owijamy i nadajemy rozmycie */}
 
       <div className={`mainContent ${addSection ? 'blurred' : ''}`}>
@@ -178,7 +186,7 @@ function StartPage() {
       )}
     </div>
 
-    <ToastContainer position="top-right" autoClose={2000} />
+  
   </>
   );
 }
