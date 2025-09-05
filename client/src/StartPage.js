@@ -142,11 +142,12 @@ function StartPage() {
   hideProgressBar={true}
   limit={3}
   style={{
-    position: 'fixed',    // Przypinamy toast do ekranu
+    position: 'sticky',    // Przypinamy toast do ekranu
     top: '20px',          // Odstęp od górnej krawędzi ekranu (np. 30px)
     left: '50%',          // Wycentrowanie
     transform: 'translateX(-50%)', // Centrujemy poziomo
     zIndex: 9999,         // Upewniamy się, że toast jest na wierzchu
+    pointerEvents: 'none', // Upewniamy się, że toast nie blokuje interakcji
   }}
 />
 
