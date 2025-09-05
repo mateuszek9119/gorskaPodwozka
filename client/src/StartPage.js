@@ -141,7 +141,7 @@ function StartPage() {
   limit={3}
   style={{
     position: 'fixed',  // Toast będzie przypięty do ekranu
-    top: '10px',        // Ustalamy, że toast pojawi się na 10px od góry
+    top: '10vh',        // Ustalamy, że toast pojawi się na 10px od góry
     right: '10px',      // Ustalamy, że toast pojawi się na 10px od prawej
     zIndex: 9999,       // Upewniamy się, że toast jest na wierzchu
     pointerEvents: 'none', // Toast nie blokuje interakcji
