@@ -88,7 +88,7 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
             )}
 
             <div className="trip-dates">
-              <p>🗓️ <strong>Wyjazd:</strong> {dateStart}</p>
+              <p>📆 <strong>Wyjazd:</strong> {dateStart}</p>
               <p>🗓️ <strong>Powrót:</strong> {dateEnd}</p>
             </div>
 
