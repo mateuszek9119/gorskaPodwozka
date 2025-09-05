@@ -22,6 +22,7 @@ function StartPage() {
   const [addSection, setAddSection] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [lastSearchedQuery, setLastSearchedQuery] = useState('');
+  const [keyboardVisible, setKeyboardVisible] = useState(false);
 
   const LIMIT = 10;
 
@@ -132,25 +133,26 @@ function StartPage() {
   };
 
 
-
-
-  useEffect(() => {
-  const onScroll = () => {
-    const toastContainer = document.querySelector('.Toastify__toast-container');
-    if (toastContainer) {
-      toastContainer.style.top = `${window.scrollY + 10}px`;  // Dostosowuje pozycję toasta na podstawie scrolla
+  // Funkcja wykrywająca klawiaturę
+  const checkKeyboardVisibility = () => {
+    const height = window.innerHeight;
+    const docHeight = document.documentElement.clientHeight;
+    if (height < docHeight) {
+      setKeyboardVisible(true); // Klawiatura jest widoczna
+    } else {
+      setKeyboardVisible(false); // Klawiatura jest schowana
     }
   };
 
-  window.addEventListener('scroll', onScroll);
+  // Monitorowanie zmiany wysokości okna
+  useEffect(() => {
+    window.addEventListener('resize', checkKeyboardVisibility);
+    checkKeyboardVisibility(); // Sprawdzamy przy pierwszym renderze
 
-  return () => {
-    window.removeEventListener('scroll', onScroll);
-  };
-}, []);
-
-
-
+    return () => {
+      window.removeEventListener('resize', checkKeyboardVisibility);
+    };
+  }, []);
 
 
 
@@ -158,17 +160,17 @@ function StartPage() {
     <>
 
    <ToastContainer
-        position="top-right"
+        position="bottom-center" // Ustawiamy toast na dole
         autoClose={2000}
         hideProgressBar={true}
         limit={3}
         style={{
           position: 'fixed',
-          top: '10px',
-          right: '10px',
+          bottom: keyboardVisible ? '50px' : '20px', // Jeżeli klawiatura widoczna, to odstęp od dołu większy
+          left: '50%',
+          transform: 'translateX(-50%)',
           zIndex: 9999,
           pointerEvents: 'none',
-          transition: 'top 0.3s ease',  // Dodanie płynnej animacji
         }}
       />
 
