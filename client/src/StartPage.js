@@ -56,11 +56,14 @@ function StartPage() {
     setIsSearching(true);
     setPage(1);
 
-     // Przewijanie na samą górę
+   // Przewijanie na samą górę (opóźnione w czasie)
+  setTimeout(() => {
     window.scrollTo({
       top: 0,        // Przewiń na samą górę
       behavior: 'smooth', // Dodajemy efekt płynnego przewijania
     });
+  }, 100); // Przewiń po 100ms
+
 
 
     try {
