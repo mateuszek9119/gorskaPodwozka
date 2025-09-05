@@ -140,7 +140,7 @@ function StartPage() {
   hideProgressBar={true}
   limit={3}
   style={{
-    marginBottom: '90vh',
+    marginBottom: '60vh',
     zIndex: 9999,         // Upewniamy się, że toast jest na wierzchu
     pointerEvents: 'none', // Upewniamy się, że toast nie blokuje interakcji
   }}
