@@ -138,9 +138,10 @@ function StartPage() {
   position="bottom-right"    // Toast wyświetla się na górze
   autoClose={2000}
   hideProgressBar={true}
+
   limit={3}
   style={{
-    marginBottom: '60vh',
+    marginBottom: '84vh',
     zIndex: 9999,         // Upewniamy się, że toast jest na wierzchu
     pointerEvents: 'none', // Upewniamy się, że toast nie blokuje interakcji
   }}
