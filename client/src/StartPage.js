@@ -133,10 +133,8 @@ function StartPage() {
 
   return (
     <>
-     
-    <div className="container" >
 
-  <ToastContainer
+      <ToastContainer
   position="top-center"    // Toast wyświetla się na górze
   autoClose={2000}
   hideProgressBar={true}
@@ -144,12 +142,12 @@ function StartPage() {
   style={{
     position: 'sticky',    // Przypinamy toast do ekranu
     top: '20px',          // Odstęp od górnej krawędzi ekranu (np. 30px)
-    left: '50%',          // Wycentrowanie
-    transform: 'translateX(-50%)', // Centrujemy poziomo
     zIndex: 9999,         // Upewniamy się, że toast jest na wierzchu
     pointerEvents: 'none', // Upewniamy się, że toast nie blokuje interakcji
   }}
 />
+     
+    <div className="container" >
 
 
       {/* ⬇️ to owijamy i nadajemy rozmycie */}
