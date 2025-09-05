@@ -138,7 +138,7 @@ function StartPage() {
   const handleFocus = () => {
   setTimeout(() => {
     window.scrollTo({
-      top: 220, // lub jakiś offset np. 100
+      top: 230, // lub jakiś offset np. 100
       behavior: 'smooth',
     });
   }, 400);  // Pocz
