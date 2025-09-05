@@ -56,7 +56,6 @@ function StartPage() {
     setIsSearching(true);
     setPage(1);
 
-    handleFocus()
 
     try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/trips?name=${encodeURIComponent(searchQuery)}&page=1&limit=${LIMIT}`);
@@ -139,7 +138,7 @@ function StartPage() {
   const handleFocus = () => {
   setTimeout(() => {
     window.scrollTo({
-      top: 60, // lub jakiś offset np. 100
+      top: 70, // lub jakiś offset np. 100
       behavior: 'smooth',
     });
   }, 400);  // Pocz
@@ -156,7 +155,7 @@ function StartPage() {
 
   limit={3}
   style={{
-    marginTop: '15vh',
+    marginTop: '18vh',
     zIndex: 9999,         // Upewniamy się, że toast jest na wierzchu
     pointerEvents: 'none', // Upewniamy się, że toast nie blokuje interakcji
   }}
@@ -179,7 +178,7 @@ function StartPage() {
 
         <div className={styles.sectionSearchTrip}>
           <p>Wyszukiwarka po miejscowośći</p>
-          <SearchTrip query={searchQuery} setQuery={setSearchQuery} />
+          <SearchTrip query={searchQuery} setQuery={setSearchQuery} handleFocus={handleFocus} />
         </div>
         
         {loading && <p className="loading-spinner">Ładowanie przejazdów...</p>}
