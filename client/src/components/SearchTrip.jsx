@@ -1,12 +1,8 @@
 import React from 'react';
 import styles from '../css/search.module.css'
 
-function SearchTrip({ query, setQuery, onSearch , handleFocus }) {
+function SearchTrip({ query, setQuery, handleFocus }) {
   
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSearch();
-  };
 
   return (
    

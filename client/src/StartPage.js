@@ -65,6 +65,8 @@ function StartPage() {
       if (res.data.data.length === 0) {
         toast.info(<>Brak przejazdów dla: " <i>{searchQuery}</i> "</>);
       } else {
+
+        handleFocus()
         
         toast.success(
           <>
@@ -178,7 +180,7 @@ function StartPage() {
 
         <div className={styles.sectionSearchTrip}>
           <p>Wyszukiwarka po miejscowośći</p>
-          <SearchTrip query={searchQuery} setQuery={setSearchQuery} handleFocus={handleFocus} />
+          <SearchTrip query={searchQuery} setQuery={setSearchQuery}  />
         </div>
         
         {loading && <p className="loading-spinner">Ładowanie przejazdów...</p>}
