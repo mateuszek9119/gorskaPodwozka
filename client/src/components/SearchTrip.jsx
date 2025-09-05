@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../css/search.module.css'
 
-function SearchTrip({ query, setQuery, onSearch }) {
+function SearchTrip({ query, setQuery, onSearch , handleFocus }) {
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,6 +16,7 @@ function SearchTrip({ query, setQuery, onSearch }) {
         placeholder="np. zakopane"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onFocus={handleFocus}
       />
   
   );

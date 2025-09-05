@@ -56,15 +56,6 @@ function StartPage() {
     setIsSearching(true);
     setPage(1);
 
-   // Przewijanie na samą górę (opóźnione w czasie)
-  setTimeout(() => {
-    window.scrollTo({
-      top: 0,        // Przewiń na samą górę
-      behavior: 'smooth', // Dodajemy efekt płynnego przewijania
-    });
-  }, 100); // Przewiń po 100ms
-
-
 
     try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/trips?name=${encodeURIComponent(searchQuery)}&page=1&limit=${LIMIT}`);
@@ -141,6 +132,17 @@ function StartPage() {
     }
   };
 
+
+
+  // Wykonaj przewijanie przy kliknięciu w input
+  const handleFocus = () => {
+      window.scrollTo({
+      top: '50',
+      behavior: 'smooth',  // Płynne przewijanie
+    });
+  };
+
+
   return (
     <>
 
@@ -151,7 +153,7 @@ function StartPage() {
 
   limit={3}
   style={{
-    marginTop: '5vh',
+    marginTop: '10vh',
     zIndex: 9999,         // Upewniamy się, że toast jest na wierzchu
     pointerEvents: 'none', // Upewniamy się, że toast nie blokuje interakcji
   }}
@@ -174,7 +176,7 @@ function StartPage() {
 
         <div className={styles.sectionSearchTrip}>
           <p>Wyszukiwarka po miejscowośći</p>
-          <SearchTrip query={searchQuery} setQuery={setSearchQuery} />
+          <SearchTrip query={searchQuery} setQuery={setSearchQuery} handleFocus={handleFocus} />
         </div>
         
         {loading && <p className="loading-spinner">Ładowanie przejazdów...</p>}
