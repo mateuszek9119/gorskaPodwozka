@@ -22,7 +22,6 @@ function StartPage() {
   const [addSection, setAddSection] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [lastSearchedQuery, setLastSearchedQuery] = useState('');
-  const [keyboardVisible, setKeyboardVisible] = useState(false);
 
   const LIMIT = 10;
 
@@ -56,6 +55,13 @@ function StartPage() {
     setLoading(true);
     setIsSearching(true);
     setPage(1);
+
+     // Przewijanie na samą górę
+    window.scrollTo({
+      top: 0,        // Przewiń na samą górę
+      behavior: 'smooth', // Dodajemy efekt płynnego przewijania
+    });
+
 
     try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/trips?name=${encodeURIComponent(searchQuery)}&page=1&limit=${LIMIT}`);
@@ -132,47 +138,21 @@ function StartPage() {
     }
   };
 
-
-  // Funkcja wykrywająca klawiaturę
-  const checkKeyboardVisibility = () => {
-    const height = window.innerHeight;
-    const docHeight = document.documentElement.clientHeight;
-    if (height < docHeight) {
-      setKeyboardVisible(true); // Klawiatura jest widoczna
-    } else {
-      setKeyboardVisible(false); // Klawiatura jest schowana
-    }
-  };
-
-  // Monitorowanie zmiany wysokości okna
-  useEffect(() => {
-    window.addEventListener('resize', checkKeyboardVisibility);
-    checkKeyboardVisibility(); // Sprawdzamy przy pierwszym renderze
-
-    return () => {
-      window.removeEventListener('resize', checkKeyboardVisibility);
-    };
-  }, []);
-
-
-
   return (
     <>
 
-   <ToastContainer
-        position="bottom-center" // Ustawiamy toast na dole
-        autoClose={2000}
-        hideProgressBar={true}
-        limit={3}
-        style={{
-          position: 'fixed',
-          bottom: keyboardVisible ? '40vh' : '10vh', // Jeżeli klawiatura widoczna, to odstęp od dołu większy
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 9999,
-          pointerEvents: 'none',
-        }}
-      />
+ <ToastContainer
+  position="top-right"    // Toast wyświetla się na górze
+  autoClose={2000}
+  hideProgressBar={true}
+
+  limit={3}
+  style={{
+    marginTop: '5vh',
+    zIndex: 9999,         // Upewniamy się, że toast jest na wierzchu
+    pointerEvents: 'none', // Upewniamy się, że toast nie blokuje interakcji
+  }}
+/>
 
      
     <div className="container" >
