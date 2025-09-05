@@ -166,7 +166,7 @@ function StartPage() {
         limit={3}
         style={{
           position: 'fixed',
-          bottom: keyboardVisible ? '50px' : '20px', // Jeżeli klawiatura widoczna, to odstęp od dołu większy
+          bottom: keyboardVisible ? '40vh' : '10vh', // Jeżeli klawiatura widoczna, to odstęp od dołu większy
           left: '50%',
           transform: 'translateX(-50%)',
           zIndex: 9999,
