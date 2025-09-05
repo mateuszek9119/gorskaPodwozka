@@ -136,10 +136,12 @@ function StartPage() {
 
   // Wykonaj przewijanie przy kliknięciu w input
   const handleFocus = () => {
-      window.scrollTo({
-      top: '50',
-      behavior: 'smooth',  // Płynne przewijanie
+  setTimeout(() => {
+    window.scrollTo({
+      top: 50, // lub jakiś offset np. 100
+      behavior: 'smooth',
     });
+  }, 200);  // Pocz
   };
 
 
