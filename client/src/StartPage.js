@@ -133,14 +133,23 @@ function StartPage() {
 
   return (
     <>
-
-    <div style={{position:'sticky', top: 0, left: 0, backgroundColor: 'red', width: '100%'} }>
-       asd    <ToastContainer position="top-right" autoClose={2000} />
-    </div>
      
     <div className="container" >
 
-   
+  <ToastContainer
+  position="top-center"    // Toast wyświetla się na górze
+  autoClose={2000}
+  hideProgressBar={true}
+  limit={3}
+  style={{
+    position: 'fixed',    // Przypinamy toast do ekranu
+    top: '20px',          // Odstęp od górnej krawędzi ekranu (np. 30px)
+    left: '50%',          // Wycentrowanie
+    transform: 'translateX(-50%)', // Centrujemy poziomo
+    zIndex: 9999,         // Upewniamy się, że toast jest na wierzchu
+  }}
+/>
+
 
       {/* ⬇️ to owijamy i nadajemy rozmycie */}
 
@@ -155,7 +164,7 @@ function StartPage() {
           <p>Wyszukiwarka po miejscowośći</p>
           <SearchTrip query={searchQuery} setQuery={setSearchQuery} />
         </div>
-
+        
         {loading && <p className="loading-spinner">Ładowanie przejazdów...</p>}
 
         {!loading && (
