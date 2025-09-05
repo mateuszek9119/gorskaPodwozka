@@ -134,7 +134,10 @@ function StartPage() {
   return (
     <>
 
-      <ToastContainer
+     
+    <div className="container" >
+
+          <ToastContainer
   position="bottom-right"    // Toast wyświetla się na górze
   autoClose={2000}
   hideProgressBar={true}
@@ -146,8 +149,6 @@ function StartPage() {
     pointerEvents: 'none', // Upewniamy się, że toast nie blokuje interakcji
   }}
 />
-     
-    <div className="container" >
 
 
 
