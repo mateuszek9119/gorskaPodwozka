@@ -6,8 +6,6 @@ import { FaInstagram } from 'react-icons/fa';
 import { FaFacebookMessenger } from 'react-icons/fa';
 
 
-
-
 function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false, fetchTrips }) {
   
   const [zoomedTripId, setZoomedTripId] = useState(null);
@@ -49,6 +47,7 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
         return (
 
           <div className="tripContainer"  key={trip.id}>
+
             
             <div className="trip-route">
                 

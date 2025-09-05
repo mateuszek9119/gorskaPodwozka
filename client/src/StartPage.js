@@ -134,21 +134,22 @@ function StartPage() {
   return (
     <>
 
-     
-    <div className="container" >
-
-          <ToastContainer
-  position="bottom-right"    // Toast wyświetla się na górze
+ <ToastContainer
+  position="top-right"  // Toast wyświetla się na górze po prawej
   autoClose={2000}
   hideProgressBar={true}
-
   limit={3}
   style={{
-    marginBottom: '80vh',
-    zIndex: 9999,         // Upewniamy się, że toast jest na wierzchu
-    pointerEvents: 'none', // Upewniamy się, że toast nie blokuje interakcji
+    position: 'fixed',  // Toast będzie przypięty do ekranu
+    top: '10px',        // Ustalamy, że toast pojawi się na 10px od góry
+    right: '10px',      // Ustalamy, że toast pojawi się na 10px od prawej
+    zIndex: 9999,       // Upewniamy się, że toast jest na wierzchu
+    pointerEvents: 'none', // Toast nie blokuje interakcji
   }}
 />
+
+     
+    <div className="container" >
 
 
 
