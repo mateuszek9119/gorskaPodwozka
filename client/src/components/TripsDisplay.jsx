@@ -88,7 +88,7 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
             )}
 
             <div className="trip-dates">
-              <p>📆 <strong>Wyjazd:</strong> {dateStart}</p>
+              <p>🗓️ <strong>Wyjazd:</strong> {dateStart}</p>
               <p>🗓️ <strong>Powrót:</strong> {dateEnd}</p>
             </div>
 
@@ -106,7 +106,15 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
                   }))
                 }
               >
-                {showDescription[trip.id] ? <strong>📝 Ukryj dodatkowe info ▲</strong> :<strong>📝 Pokaż dodatkowe info ▼</strong>}
+                {showDescription[trip.id] ? 
+                <span>
+                  <strong>📝 Opis wyjazdu </strong> <span className='btnShowHideTxt'>zwiń ▲</span>
+                </span>  
+                : 
+                <span>
+                  <strong>📝 Opis wyjazdu </strong> <span className='btnShowHideTxt'>rozwiń ▼</span>
+                </span>
+                }
               </p>
               
               <div className={`description ${showDescription[trip.id] ? 'show' : ''}`}>
@@ -125,7 +133,15 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
                 }))
               }
             >   
-              {showContact[trip.id] ? <strong>🔗 Ukryj dane kontaktowe ▲</strong> : <strong>🔗 Pokaż dane kontaktowe ▼</strong>}
+              {showContact[trip.id] ? 
+              <span>
+                <strong>🔗 Kontakt </strong> <span className='btnShowHideTxt'> zwiń ▲</span> 
+              </span> 
+              : 
+              <span>
+                <strong>🔗 Kontakt </strong> <span className='btnShowHideTxt'> rozwiń ▼ </span>
+              </span> 
+              }
             </p>
 
             <div className={`trip-contact ${showContact[trip.id] ? 'show' : ''}`}>
