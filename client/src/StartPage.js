@@ -66,8 +66,6 @@ function StartPage() {
         toast.info(<>Brak przejazdów dla: " <i>{searchQuery}</i> "</>);
       } else {
 
-        handleFocus()
-        
         toast.success(
           <>
             Ilość przejazdów dla " <i>{searchQuery}</i> " : {res.data.data.length}
@@ -140,7 +138,7 @@ function StartPage() {
   const handleFocus = () => {
   setTimeout(() => {
     window.scrollTo({
-      top: 0, // lub jakiś offset np. 100
+      top: 100, // lub jakiś offset np. 100
       behavior: 'smooth',
     });
   }, 400);  // Pocz
@@ -154,20 +152,15 @@ function StartPage() {
   position="top-right"    // Toast wyświetla się na górze
   autoClose={2000}
   hideProgressBar={true}
-
   limit={3}
   style={{
-    marginTop: '30vh',
+    marginTop: '28vh',
     zIndex: 9999,         // Upewniamy się, że toast jest na wierzchu
     pointerEvents: 'none', // Upewniamy się, że toast nie blokuje interakcji
   }}
 />
-
      
     <div className="container" >
-
-
-
 
       {/* ⬇️ to owijamy i nadajemy rozmycie */}
 
@@ -180,7 +173,7 @@ function StartPage() {
 
         <div className={styles.sectionSearchTrip}>
           <p>Wyszukiwarka po miejscowośći</p>
-          <SearchTrip query={searchQuery} setQuery={setSearchQuery}  />
+          <SearchTrip query={searchQuery} setQuery={setSearchQuery} handleFocus={handleFocus}  />
         </div>
         
         {loading && <p className="loading-spinner">Ładowanie przejazdów...</p>}
