@@ -138,7 +138,7 @@ function StartPage() {
   const handleFocus = () => {
   setTimeout(() => {
     window.scrollTo({
-      top: 70, // lub jakiś offset np. 100
+      top: 260, // lub jakiś offset np. 100
       behavior: 'smooth',
     });
   }, 400);  // Pocz
@@ -155,7 +155,7 @@ function StartPage() {
 
   limit={3}
   style={{
-    marginTop: '18vh',
+    marginTop: '32vh',
     zIndex: 9999,         // Upewniamy się, że toast jest na wierzchu
     pointerEvents: 'none', // Upewniamy się, że toast nie blokuje interakcji
   }}
