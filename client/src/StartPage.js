@@ -133,14 +133,13 @@ function StartPage() {
 
   return (
     <>
-
-    <div style={{position:'sticky', top: 0, width: '100%'} }>
-           <ToastContainer position="top-right" autoClose={2000} />
-    </div>
+    
      
     <div className="container" >
 
-   
+
+    
+         <ToastContainer position="top-right" autoClose={2000} />
 
       {/* ⬇️ to owijamy i nadajemy rozmycie */}
 
