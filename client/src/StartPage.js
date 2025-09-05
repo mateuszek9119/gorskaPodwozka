@@ -56,6 +56,7 @@ function StartPage() {
     setIsSearching(true);
     setPage(1);
 
+    handleFocus()
 
     try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/trips?name=${encodeURIComponent(searchQuery)}&page=1&limit=${LIMIT}`);
@@ -178,7 +179,7 @@ function StartPage() {
 
         <div className={styles.sectionSearchTrip}>
           <p>Wyszukiwarka po miejscowośći</p>
-          <SearchTrip query={searchQuery} setQuery={setSearchQuery} handleFocus={handleFocus} />
+          <SearchTrip query={searchQuery} setQuery={setSearchQuery} />
         </div>
         
         {loading && <p className="loading-spinner">Ładowanie przejazdów...</p>}
