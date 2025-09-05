@@ -131,22 +131,46 @@ function StartPage() {
     }
   };
 
+
+
+
+  useEffect(() => {
+  const onScroll = () => {
+    const toastContainer = document.querySelector('.Toastify__toast-container');
+    if (toastContainer) {
+      toastContainer.style.top = `${window.scrollY + 10}px`;  // Dostosowuje pozycję toasta na podstawie scrolla
+    }
+  };
+
+  window.addEventListener('scroll', onScroll);
+
+  return () => {
+    window.removeEventListener('scroll', onScroll);
+  };
+}, []);
+
+
+
+
+
+
   return (
     <>
 
- <ToastContainer
-  position="top-right"  // Toast wyświetla się na górze po prawej
-  autoClose={2000}
-  hideProgressBar={true}
-  limit={3}
-  style={{
-    position: 'fixed',  // Toast będzie przypięty do ekranu
-    top: '10vh',        // Ustalamy, że toast pojawi się na 10px od góry
-    right: '10px',      // Ustalamy, że toast pojawi się na 10px od prawej
-    zIndex: 9999,       // Upewniamy się, że toast jest na wierzchu
-    pointerEvents: 'none', // Toast nie blokuje interakcji
-  }}
-/>
+   <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={true}
+        limit={3}
+        style={{
+          position: 'fixed',
+          top: '10px',
+          right: '10px',
+          zIndex: 9999,
+          pointerEvents: 'none',
+          transition: 'top 0.3s ease',  // Dodanie płynnej animacji
+        }}
+      />
 
      
     <div className="container" >
