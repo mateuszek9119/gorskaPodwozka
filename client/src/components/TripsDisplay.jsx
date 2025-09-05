@@ -38,9 +38,9 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
         
         const midCities = trip.cities ? trip.cities.split(',') : [];
         const cityList = [
-          { label: trip.cityStart, icon: '🏁' },
-          ...midCities.map(city => ({ label: city.trim() })),
-          { label: trip.cityEnd, icon: '🏔️' },
+          `🚗 ${trip.cityStart}`,
+          ...midCities.map(city => (city.trim() )),
+          `${trip.cityEnd} 🏔️`,
         ];
 
         const dateStart = moment(trip.dateStartTrip).format('DD-MM-YYYY');
@@ -51,9 +51,10 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
           <div className="tripContainer"  key={trip.id}>
             
             <div className="trip-route">
+                
               {cityList.map((city, index) => (
                 <span key={index} className="trip-city">
-                  <span className="city-icon">{city.icon}</span> {city.label}
+                  {city}
                   {index !== cityList.length - 1 && <span className="arrow">→</span>}
                 </span>
               ))}
@@ -87,8 +88,8 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
             )}
 
             <div className="trip-dates">
-              <p>📅 <strong>Wyjazd:</strong> {dateStart}</p>
-              <p>📅 <strong>Powrót:</strong> {dateEnd}</p>
+              <p>🗓️ <strong>Wyjazd:</strong> {dateStart}</p>
+              <p>🗓️ <strong>Powrót:</strong> {dateEnd}</p>
             </div>
 
 
