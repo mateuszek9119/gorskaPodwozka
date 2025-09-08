@@ -5,6 +5,7 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import { toast } from 'react-toastify'
 import styles from '../css/tripAdd.module.css'
 
+
 function TripAdd({ fetchTrips, handleCloseForm }) {
   const [showMiddleInput, setShowMiddleInput] = useState(false)
   const [step, setStep] = useState(1) // 1: Trasa, 2: Szczegóły, 3: Użytkownik
@@ -122,7 +123,10 @@ function TripAdd({ fetchTrips, handleCloseForm }) {
 
     <div className={styles.formContainer}>
 
+             <span className={styles.stepInfo}>Krok {step} / 3</span>
+
       <form onSubmit={handleUpload} method="post" encType="multipart/form-data">
+      
 
         <div className={styles['form-header']}>
 
@@ -152,8 +156,10 @@ function TripAdd({ fetchTrips, handleCloseForm }) {
                 {step === 1 ? (
                   
                   <div className={styles.step}>
+
                   
                   {/* KROK 1 – TRASA */}
+
 
 
 <div className={styles['floating-label']}>
@@ -391,10 +397,14 @@ function TripAdd({ fetchTrips, handleCloseForm }) {
                   </div>
                 )}
 
+
               </div>
+                                 
             </CSSTransition>
           </SwitchTransition>
 
+          
+        
         </div>
 
 {step < 3 && (

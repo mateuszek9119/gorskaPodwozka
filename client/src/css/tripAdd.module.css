@@ -22,10 +22,17 @@
 
 
 /* Opcjonalnie: kontener, by utrzymać pozycje */
-.stepContainer {
-  position: relative;
-}
 
+
+span.stepInfo {
+  font-size: .9rem;
+  color: #666;
+  text-align: center;
+  letter-spacing: 0.5px;
+  font-style: italic;
+  font-family: 'Inter', 'Segoe UI', sans-serif; /* 👈 lub inny neutralny */
+  white-space: nowrap;
+}
 
 /* Nagłówek formularza */
 .form-header {
