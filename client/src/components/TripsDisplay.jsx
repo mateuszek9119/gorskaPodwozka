@@ -65,7 +65,7 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
                 
                 <div className="userImageWrapper" onClick={() => toggleZoom(trip.id)}>
                   <img
-                    src={`${trip.imgPath}`}
+                    src={trip.imgPath.replace('/upload/', '/upload/w_400,f_auto,q_auto/')}
                     alt={trip.userName}
                     className="userImage"
                     loading="lazy"
@@ -78,7 +78,9 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
                   <div className="zoomedOverlay" onClick={handleOutsideClick}>
                     <div
                       className="zoomedImage"
-                      style={{ backgroundImage: `url(${trip.imgPath})` }}
+                      style={{ 
+                        backgroundImage: `url(${trip.imgPath.replace('/upload/', '/upload/w_1200,f_auto,q_auto/')})`,
+                       }}
                       onClick={(e) => e.stopPropagation()}
                     ></div>
                   </div>

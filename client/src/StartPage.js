@@ -9,6 +9,7 @@ import './css/app.css';
 import styles from './css/search.module.css';
 
 function StartPage() {
+  
   axios.defaults.withCredentials = true;
 
   const isFirstRender = useRef(true)
