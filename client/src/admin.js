@@ -4,9 +4,11 @@ import Login from './components/Login';
 import AdminPanel from './components/AdminPanel';
 
 function Admin() {
+
   const [isAdmin, setIsAdmin] = useState(null); // null = nie wiemy jeszcze
 
   useEffect(() => {
+    
     axios
       .get(`${process.env.REACT_APP_API_URL}/admin/adminPage`, { withCredentials: true })
       .then((res) => {
@@ -24,6 +26,7 @@ function Admin() {
   }
 
   return isAdmin ? <AdminPanel isAdmin={isAdmin} /> : <Login />;
+
 }
 
 export default Admin;

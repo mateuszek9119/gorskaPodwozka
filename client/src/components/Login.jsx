@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
@@ -18,11 +18,26 @@ function Login() {
 
     e.preventDefault()
 
-    const response = await axios.post(`${process.env.REACT_APP_API_URL}/log/?login=${login}&password=${password}` ,null, { withCredentials: true })
+    try{
 
-     if(response.data.admin && response.data.success){
-          window.location.href='/admin'
-     }
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/log`,{login, password},
+        { withCredentials: true, headers: { 'Content-Type': 'application/json', } } );
+
+      if (response.data.admin && response.data.success) {
+        window.location.href = '/admin';
+      } else {
+        alert(response.data?.message || 'Nieprawidłowe dane logowania');
+      } 
+    }catch(error){
+        const message =
+    error.response?.data?.message ||
+    error.message ||
+    'Wystąpił błąd po stronie serwera';
+
+    alert(message);
+
+    }  
+ 
   }
 
 

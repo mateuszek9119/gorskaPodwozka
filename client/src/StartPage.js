@@ -59,7 +59,9 @@ function StartPage() {
 
 
     try {
+
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/trips?name=${encodeURIComponent(searchQuery)}&page=1&limit=${LIMIT}`);
+      
       setFilteredTrips(res.data.data);
       setHasMore(res.data.total > res.data.data.length);
       setLastSearchedQuery(searchQuery); // ⬅️ ustaw dopiero po odpowiedzi

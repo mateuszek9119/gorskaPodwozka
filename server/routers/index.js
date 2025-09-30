@@ -89,11 +89,14 @@ router.post("/upload", upload.single('img'), async (req, res) => {
 
 // Logowanie – bez zmian
 router.post('/log', (req, res) => {
-  if (req.query.login === process.env.ADMIN_USER && req.query.password === process.env.ADMIN_PASS) {
+
+  const {login, password} = req.body
+
+  if (login === process.env.ADMIN_USER && password === process.env.ADMIN_PASS) {
     req.session.admin = 'admin';
     res.json({ success: true, admin: req.session.admin });
   } else {
-    res.json({ success: false, message: 'Nieprawidłowe dane logowania' });
+    res.json({ success: false, message: 'Nieprawidłowe dane logowania...' });
   }
 });
 

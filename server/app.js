@@ -21,6 +21,8 @@ const PORT = process.env.PORT || 3001;
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Udostępnij folder uploads publicznie pod ścieżką /uploads
 
+app.set('trust proxy', 1);
+
 
 // CORS configuration
 const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [];
@@ -49,6 +51,8 @@ app.use(
     saveUninitialized: false,  // Nie twórz sesji, jeśli użytkownik jej nie używa
     cookie: {
       secure: process.env.NODE_ENV === 'production',  // Używaj secure cookie w produkcji
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', 
+        httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 7,  // Czas życia ciasteczka (7 dni)
     },
     store: MongoStore.create({
