@@ -104,8 +104,8 @@ app.get('/api/test', (req, res) => {
 
 // Obsługuj wszystkie inne ścieżki, żeby React mógł obsługiwać routing po stronie klienta
 
-app.get(/^\/(?!api|admin|uploads).*/, (req, res) => { 
-   res.sendFile(path.join(__dirname, 'public', 'index.html')); // To będzie obsługiwać routing Reacta
+app.get(/^\/(?!api|uploads).*/, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 
