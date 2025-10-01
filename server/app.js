@@ -17,9 +17,22 @@ const adminRouter = require('./routers/admin');
 
 const PORT = process.env.PORT || 3001;
 
+
 // Udostępnienie folderu uploads publicznie pod ścieżką /uploads
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-// Udostępnij folder uploads publicznie pod ścieżką /uploads
+
+//app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+app.use('/uploads', (req, res, next) => {
+  const allowedExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
+  const ext = path.extname(req.path).toLowerCase();
+
+  if (!allowedExtensions.includes(ext)) {
+    return res.status(403).send('Niedozwolony typ pliku');
+  }
+
+  next();
+}, express.static(path.join(__dirname, 'uploads')));
+
 
 app.set('trust proxy', 1);
 
@@ -43,41 +56,54 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
+
 // Konfiguracja sesji
+
+const isProduction = process.env.NODE_ENV === 'production';
+
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || 'defaultsecret',  // Sekret sesji
-    resave: false,  // Nie zapisuj sesji, jeśli nie zostały zmienione
-    saveUninitialized: false,  // Nie twórz sesji, jeśli użytkownik jej nie używa
-    cookie: {
-      secure: process.env.NODE_ENV === 'production',  // Używaj secure cookie w produkcji
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', 
-        httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24 * 7,  // Czas życia ciasteczka (7 dni)
-    },
+    secret: process.env.SESSION_SECRET || 'defaultsecret',
+    resave: false,
+    saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: process.env.DATA_BASE, // URL do MongoDB (zdefiniowane w zmiennych środowiskowych)
-      collectionName: 'sessions', // Nazwa kolekcji, w której będą przechowywane sesje
-      ttl: 14 * 24 * 60 * 60,  // Czas życia sesji w sekundach (14 dni)
+      mongoUrl: process.env.DATA_BASE,
+      collectionName: 'sessions',
+      ttl: 14 * 24 * 60 * 60, // 14 dni
     }),
+    cookie: {
+      secure: isProduction,                     // HTTPS tylko w produkcji (np. Heroku)
+      httpOnly: true,
+      sameSite: isProduction ? 'none' : 'lax',  // 'none' dla cross-site (Heroku), 'lax' lokalnie
+      maxAge: 1000 * 60 * 60 * 24 * 7,          // 7 dni
+    },
   })
 );
+
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 
+
 // Serwuj statyczne pliki Reacta (build z clienta)
 
 //app.use(express.static(path.join(__dirname, 'public')));
+
+
 // Serwowanie plików statycznych (React)
+
 app.use('/', express.static(path.join(__dirname, 'public')));
 
+
 // Obsługuj API na ścieżce /api
+
 app.get('/api/test', (req, res) => {
   res.json({ message: "Backend działa!" });
 });
 
+
 // Obsługuj wszystkie inne ścieżki, żeby React mógł obsługiwać routing po stronie klienta
+
 app.get('/*splat', (req, res) => { 
    res.sendFile(path.join(__dirname, 'public', 'index.html')); // To będzie obsługiwać routing Reacta
 });
