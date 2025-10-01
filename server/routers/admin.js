@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const router = express.Router();
 
-// Middleware sprawdzający, czy użytkownik to admin
+// Middleware sprawdzający admina
 function requireAdmin(req, res, next) {
   if (req.session && req.session.admin === 'admin') {
     return next();
@@ -12,12 +12,12 @@ function requireAdmin(req, res, next) {
   return res.status(403).json({ success: false, message: 'Brak dostępu - nie jesteś administratorem.' });
 }
 
-// Sprawdzenie statusu sesji admina
+// GET /admin/adminPage - status sesji admina
 router.get('/adminPage', requireAdmin, (req, res) => {
   res.json({ valid: true, session: req.session.admin });
 });
 
-// Pobranie wszystkich przejazdów z paginacją
+// GET /admin/all-trips - paginacja i pobranie przejazdów
 router.get('/all-trips', requireAdmin, async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -55,7 +55,7 @@ router.get('/all-trips', requireAdmin, async (req, res) => {
   }
 });
 
-// Wylogowanie
+// POST /admin/logout - wylogowanie
 router.post('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) {
@@ -67,7 +67,7 @@ router.post('/logout', (req, res) => {
   });
 });
 
-// Usunięcie przejazdu
+// DELETE /admin/delete/:id - usuwanie przejazdu
 router.delete('/delete/:id', requireAdmin, async (req, res) => {
   const id = req.params.id;
 

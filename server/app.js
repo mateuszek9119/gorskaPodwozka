@@ -85,15 +85,10 @@ app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 
 
-// Serwuj statyczne pliki Reacta (build z clienta)
-
-//app.use(express.static(path.join(__dirname, 'public')));
-
-
 // Serwowanie plików statycznych (React)
 
-app.use('/', express.static(path.join(__dirname, 'public')));
-
+//app.use('/', express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Obsługuj API na ścieżce /api
 

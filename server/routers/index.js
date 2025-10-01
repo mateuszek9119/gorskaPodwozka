@@ -2,12 +2,11 @@ const express = require('express');
 const path = require('path');
 const Trip = require('./../TripSchema');
 
-const router = express();
+const router = express.Router(); // zmiana z express() na express.Router()
 
-// 🆕 Cloudinary upload:
-const { upload } = require('../config/cloudinary'); 
+const { upload } = require('../config/cloudinary');
 
-// GET /trips – bez zmian
+// GET /api/trips
 router.get('/trips', async (req, res) => {
   try {
     const searchCity = req.query.name || "";
@@ -31,7 +30,7 @@ router.get('/trips', async (req, res) => {
       dateStartTrip: trip.dateStartTrip,
       dateEndTrip: trip.dateEndTrip,
       userName: trip.userName,
-      imgPath: trip.imgPath, // 🔁 URL z Cloudinary
+      imgPath: trip.imgPath,
       contentType: trip.contentType,
       contactPhone: trip.contactPhone,
       contactInsta: trip.contactInsta,
@@ -52,8 +51,7 @@ router.get('/trips', async (req, res) => {
   }
 });
 
-
-// 🆕 POST /upload → teraz zapisuje do Cloudinary
+// POST /api/upload
 router.post("/upload", upload.single('img'), async (req, res) => {
   if (
     !req.body.contactPhone &&
@@ -72,7 +70,7 @@ router.post("/upload", upload.single('img'), async (req, res) => {
       dateStartTrip: req.body.dateStartTrip,
       dateEndTrip: req.body.dateEndTrip,
       userName: req.body.userName,
-      imgPath: req.file.path, // 🔁 To jest link do zdjęcia w Cloudinary
+      imgPath: req.file.path,
       contentType: req.file.mimetype,
       contactPhone: req.body.contactPhone,
       contactInsta: req.body.contactInsta,
@@ -87,10 +85,9 @@ router.post("/upload", upload.single('img'), async (req, res) => {
   }
 });
 
-// Logowanie – bez zmian
+// POST /api/log (logowanie admin)
 router.post('/log', (req, res) => {
-
-  const {login, password} = req.body
+  const { login, password } = req.body;
 
   if (login === process.env.ADMIN_USER && password === process.env.ADMIN_PASS) {
     req.session.admin = 'admin';
