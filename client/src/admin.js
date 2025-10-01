@@ -10,7 +10,7 @@ function Admin() {
   useEffect(() => {
     
     axios
-      .get(`${process.env.REACT_APP_API_URL}/admin/adminPage`, { withCredentials: true })
+      .get(`${process.env.REACT_APP_API_URL}/admin-api/adminPage`, { withCredentials: true })
       .then((res) => {
         if (res.data.valid && res.data.session) {
           setIsAdmin(res.data.session);

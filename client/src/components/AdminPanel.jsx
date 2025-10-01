@@ -11,7 +11,7 @@ function AdminPanel({isAdmin}){
 
     try{
 
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/admin/all-trips`, { withCredentials: true })
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/admin-api/all-trips`, { withCredentials: true })
 
       setTrips( response.data.data )
    
@@ -30,7 +30,7 @@ function AdminPanel({isAdmin}){
   const logOut = async ()=>{
     
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/admin/logout`, {}, { withCredentials: true });
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/admin-api/logout`, {}, { withCredentials: true });
       if (res.data.success) {
         window.location.reload(); // <--- odświeżenie aplikacji
       } else {

@@ -12,12 +12,12 @@ function requireAdmin(req, res, next) {
   return res.status(403).json({ success: false, message: 'Brak dostępu - nie jesteś administratorem.' });
 }
 
-// GET /admin/adminPage - status sesji admina
+// GET /admin-api/adminPage - status sesji admina
 router.get('/adminPage', requireAdmin, (req, res) => {
   res.json({ valid: true, session: req.session.admin });
 });
 
-// GET /admin/all-trips - paginacja i pobranie przejazdów
+// GET /admin-api/all-trips - paginacja i pobranie przejazdów
 router.get('/all-trips', requireAdmin, async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -55,7 +55,7 @@ router.get('/all-trips', requireAdmin, async (req, res) => {
   }
 });
 
-// POST /admin/logout - wylogowanie
+// POST /admin-api/logout - wylogowanie
 router.post('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) {
@@ -67,7 +67,7 @@ router.post('/logout', (req, res) => {
   });
 });
 
-// DELETE /admin/delete/:id - usuwanie przejazdu
+// DELETE /admin-api/delete/:id - usuwanie przejazdu
 router.delete('/delete/:id', requireAdmin, async (req, res) => {
   const id = req.params.id;
 

@@ -81,9 +81,8 @@ app.use(
 );
 
 
-app.use('/api', indexRouter);
-app.use('/admin', adminRouter);
-
+app.use('/', indexRouter);
+app.use('/admin-api', adminRouter);
 
 // Serwowanie plików statycznych (React)
 

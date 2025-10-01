@@ -23,7 +23,7 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
   };
 
   const handleDeleteTrip = async (id) => {
-    const del = await axios.delete(`${process.env.REACT_APP_API_URL}/admin/delete/${id}`, { withCredentials: true });
+    const del = await axios.delete(`${process.env.REACT_APP_API_URL}/admin-api/delete/${id}`, { withCredentials: true });
     if (del.data.success) {
       fetchTrips();
       alert(del.data.message);
