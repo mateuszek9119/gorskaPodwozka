@@ -1,0 +1,9 @@
+services:
+  - type: static
+    name: gorska-podwozka-frontend
+    env: static
+    staticPublishPath: client/build
+    routes:
+      - type: rewrite
+        src: "/*"
+        dest: "/index.html"
