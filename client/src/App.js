@@ -1,7 +1,9 @@
+import StartPage from './StartPage';
 import Admin from './admin';
+import TestPage from './TestPage';
 import './css/app.css';
 import {Routes,Route} from "react-router-dom"
-import StartPage from './StartPage';
+
 
 
 function App() {
@@ -10,6 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element={<StartPage />} />
         <Route path='/admin' element={<Admin />} />
+        <Route path='/testPAge' element={<TestPage />} />
       </Routes>
     </>
   );
