@@ -189,7 +189,7 @@ function StartPage() {
         <BottomsBar onAddClick={() => setAddSection(true)} onSearchClick={scrollToSearchInput} />
 
 
-        <h1 className="h1-header" aria-label="Górska Podwózka"> 
+        <h1 className="h1-header userSelectNone"  aria-label="Górska Podwózka"> 
           <img src="/logo/logoApp.png" alt="logo"  className="logo"  />  
           GórskaPodwózka
         </h1>

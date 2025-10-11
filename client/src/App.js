@@ -1,3 +1,4 @@
+import ScrollToTop from './ScrollToTop';
 import StartPage from './StartPage';
 import Admin from './admin';
 import InfoPage from './components/info/InfoPage';
@@ -14,9 +15,12 @@ import CoffeePage from './components/info/CoffeePage';
 
 
 
+
+
 function App() {
   return (
-    <>      
+    <>
+      <ScrollToTop />      
       <Routes>
         <Route path='/' element={<StartPage />} />
         <Route path='/admin' element={<Admin />} />

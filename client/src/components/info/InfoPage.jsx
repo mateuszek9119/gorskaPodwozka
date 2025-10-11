@@ -7,7 +7,7 @@ function InfoPage() {
 
     <div className={styles.rulesAndPolicyConteiner}>
       
-      <h3 aria-label="Górska Podwózka">
+      <h3 aria-label="Górska Podwózka userSelectNone">
         <img src="/logo/logoApp.png" alt="logo" className='logo'  />  GórskaPodwózka
       </h3>
 

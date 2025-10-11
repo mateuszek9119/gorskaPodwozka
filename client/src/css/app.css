@@ -14,6 +14,12 @@ body {
 }
 
 
+.userSelectNone {
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -454,3 +460,5 @@ span span.btnShowHideTxt{
     color: #21867a;
   }
 }
+
+
