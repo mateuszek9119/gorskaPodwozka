@@ -6,9 +6,12 @@ function InfoPage() {
   return (
 
     <div className={styles.rulesAndPolicyConteiner}>
-      <h3>Więcej o GórskaPodwózka</h3>
+      
+      <h3 aria-label="Górska Podwózka">
+        <img src="/logo/logoApp.png" alt="logo" className='logo'  />  GórskaPodwózka
+      </h3>
 
-      <p><strong>GórskaPodwózka</strong> to darmowa platforma ogłoszeń, która umożliwia wspólne podróże w góry. Łączymy kierowców i pasażerów z różnych zakątków Polski — bez rejestracji, bez opłat, szybko i wygodnie.</p>
+      <p><strong>GórskaPodwózka</strong> to darmowa platforma ogłoszeń, która umożliwia wspólne podróże w góry. Łączym kierowców i pasażerów z różnych zakątków Polski — bez rejestracji, bez opłat, szybko i wygodnie.</p>
 
       <div className={styles.note} >
         🔔 <strong>Bezpieczeństwo przede wszystkim!</strong> <p>Zanim wybierzesz się w trasę, upewnij się z kim jedziesz, sprawdź pojazd i ustal wszystkie szczegóły. GórskaPodwózka nie pośredniczy w umawianiu przejazdów.</p>
@@ -33,6 +36,10 @@ function InfoPage() {
 
       <p className={styles.wrapperBackLink}>
         <Link className={styles.backLink} to="/">← Powrót</Link>
+      </p>
+
+      <p className={styles.mycopyright}>
+        © 2025 GórskaPodwózka — wszystkie prawa zastrzeżone. Projekt i realizacja: Mateusz
       </p>
 
       <BottomsBar />

@@ -39,10 +39,17 @@ input{
 }
 
 .h1-header {
-  font-size: 1.375rem; /* 22px */
-  margin-top: 6vh;
+  display: flex;
+  align-items: center;    
+  justify-content: center;
+  font-size: 1.5rem; 
   margin-bottom: 4vh;
-  color: #2a9d8f;
+  color: #2a9d8f; 
+}
+
+img.logo {
+  width: 60px;   /* dopasuj wielkość logo */
+  height: auto;  /* zachowaj proporcje */
 }
 
 .container p {

@@ -188,7 +188,11 @@ function StartPage() {
       
         <BottomsBar onAddClick={() => setAddSection(true)} onSearchClick={scrollToSearchInput} />
 
-        <h1 className="h1-header" aria-label="Górska Podwózka">GórskaPodwózka</h1>
+
+        <h1 className="h1-header" aria-label="Górska Podwózka"> 
+          <img src="/logo/logoApp.png" alt="logo"  className="logo"  />  
+          GórskaPodwózka
+        </h1>
 
         <p className="sub-header">
           Jedziesz w góry? Znajdź przejazd lub dodaj swój i zabierz kogoś !

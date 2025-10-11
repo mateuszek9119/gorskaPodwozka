@@ -12,7 +12,6 @@
   align-items: center;
   padding: 5px 0;
   z-index: 1000;
-  
 }
 
 .bottom-bar button {
@@ -47,4 +46,13 @@
 .bottom-bar button:hover,
 .bottom-bar a:hover {
   color: #2a9d8f;
+}
+
+
+
+@media (max-width: 400px) {
+
+ .bottom-bar {
+    height: 45px; /* wysokość paska */
+  }
 }

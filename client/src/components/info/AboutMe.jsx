@@ -29,16 +29,16 @@ function AboutMe() {
         <p>✉️ mateuszek9119@gmail.com</p>
       </div>
 
-        
-      
-      
-      
-
-      <p className={styles.wrapperBackLink}>
+       <p className={styles.wrapperBackLink}>
         <Link className={styles.backLink} to="/info">← Powrót</Link>
+      </p>
+        
+      <p className={styles.mycopyright}>
+        © 2025 GórskaPodwózka — wszystkie prawa zastrzeżone. Projekt i realizacja: Mateusz
       </p>
 
       <BottomsBar />
+      
     </div>
   );
 }

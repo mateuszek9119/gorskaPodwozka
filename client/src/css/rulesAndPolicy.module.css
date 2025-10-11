@@ -1,6 +1,6 @@
 .rulesAndPolicyConteiner{
   font-family: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
-  margin-bottom: 12vh;
+  margin-bottom: 55px;
 }
 
 .rulesAndPolicyConteiner h3{
@@ -10,8 +10,12 @@
 }
 
 .rulesAndPolicyConteiner h3:first-child{
+  display: flex;
+  align-items: center;    
+  justify-content: center;
   color: #2a9d8f
 }
+
 
 .rulesAndPolicyConteiner p{
   padding: 0 20px;
@@ -168,5 +172,28 @@ p.wrapperBackLink{
     font-size: 12px;
     margin-top: 8px;
     line-height: 1.5;
-  };
+  }
 
+
+p.mycopyright {
+  font-size: 0.8rem;
+  color: #fff;
+  text-align: center;
+  margin-top: 4vh;
+  margin-bottom: 0;
+  padding: 0.75rem 0;
+  background-color: #2a9d8f; /* ładny, spokojny granat */
+  opacity: 0.9;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+}
+
+
+
+@media (max-width: 400px) {
+
+  .rulesAndPolicyConteiner{
+    margin-bottom: 45px;
+  }
+}
