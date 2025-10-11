@@ -16,12 +16,12 @@ body {
 
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
   max-width: 1200px;
   margin: 4vh auto;
   text-align: center;
-  
 }
 
 
@@ -87,12 +87,18 @@ p.sub-header {
   width: 100%;
   background-color: #fdfdfb;
   padding: 0.75rem 1rem; /* 12px 16px */
-  box-shadow: 0 0.25rem 0.9375rem rgba(38, 70, 83, 0.1);
+  box-shadow: 0 0.25rem 0.9rem rgba(38, 70, 83, 0.1);
   transition: box-shadow 0.3s ease;
   border-left: 4px solid #2a9d8f;
-  border-top-left-radius: 0.375rem; /* 6px */
-  border-bottom-left-radius: 0.375rem;
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
   text-align: left;
+ 
+  /* 🔹 Dodane: wyrównanie wysokości kart */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 300px;
 }
 
 .tripContainer:hover {
@@ -120,9 +126,9 @@ p.sub-header {
   justify-content: center;
   align-items: center;
   font-size: 0.9rem;
-  margin: 1vh 0;
-  gap: 0.5rem;
+  gap: 0.7rem;
   line-height: 1.8;
+  min-height: 4.2em;
 }
 
 .trip-city {
@@ -144,8 +150,8 @@ p.sub-header {
 
 
 p.userName{
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: .9rem;
+  font-weight: 500;
   letter-spacing: .01rem;
   font-family: 'Lato', sans-serif;
 }
@@ -246,7 +252,7 @@ p strong {
 /* Description */
 
 div.trip-description-inline {
-  margin: 3vh 0;
+  margin: .4em 0;
   font-size: 0.9rem;
   line-height: 1.4;
   white-space: pre-line;
@@ -384,16 +390,13 @@ span span.btnShowHideTxt{
 
 /* Responsive */
 
-/* Mobile first - default is mobile */
-
-/* Tablets and up */
 @media (min-width: 600px) {
   .container {
     width: 85%;
   }
 
   .userImage {
-    width: 5rem; /* 80px */
+    width: 5rem;
     height: 5rem;
   }
 
@@ -406,7 +409,7 @@ span span.btnShowHideTxt{
   }
 }
 
-/* Desktop and up */
+/* 💻 Desktop */
 @media (min-width: 1024px) {
   .container {
     display: flex;
@@ -415,17 +418,20 @@ span span.btnShowHideTxt{
     width: 100%;
   }
 
- .mainContent{
-  width: 80%;
- }
+  .mainContent {
+    width: 80%;
+  }
 
- .trip-route {
-  font-size: 1.2rem;
- }
+  .trip-route {
+    font-size: 1.2rem;
+  }
 
+  .tripContainer {
+    min-height: 160px;
+  }
 
   .userImage {
-    width: 6rem; /* 96px */
+    width: 6rem;
     height: 6rem;
   }
 
@@ -433,11 +439,11 @@ span span.btnShowHideTxt{
     font-size: 1.2rem;
   }
 
-  .toggle-description:hover{
-  color: #21867a;
-}
+  .toggle-description:hover {
+    color: #21867a;
+  }
 
   .toggle-contact:hover {
-  color: #21867a;
-}
+    color: #21867a;
+  }
 }

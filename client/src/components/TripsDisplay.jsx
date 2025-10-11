@@ -95,7 +95,7 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
 
 
 
-            {trip.description && (
+     
             <div className="trip-description-inline">
 
               <p
@@ -107,6 +107,8 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
                   }))
                 }
               >
+                { trip.description ? (
+                <>
                 {showDescription[trip.id] ? 
                 <span>
                   <strong>📝 Opis wyjazdu </strong> <span className='btnShowHideTxt'>zwiń ▲</span>
@@ -115,7 +117,12 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
                 <span>
                   <strong>📝 Opis wyjazdu </strong> <span className='btnShowHideTxt'>rozwiń ▼</span>
                 </span>
-                }
+                }</>
+              ):(<>
+              <span>
+                  <strong>📝 Opis wyjazdu </strong> <span className='btnShowHideTxt'>brak</span>
+                </span>
+              </>)}
               </p>
               
               <div className={`description ${showDescription[trip.id] ? 'show' : ''}`}>
@@ -123,7 +130,7 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
               </div> 
 
             </div>
-            )}
+           
 
             <p
               className="toggle-contact"

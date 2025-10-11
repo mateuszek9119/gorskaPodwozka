@@ -1,0 +1,50 @@
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 55px; /* wysokość paska */
+  background: #fff;
+  border-top: 1px solid #bbb;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px 0;
+  z-index: 1000;
+  
+}
+
+.bottom-bar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.iconButton{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  width: 25%;
+  text-decoration: none;
+}
+
+.iconButton span{
+  color: #777;
+  letter-spacing: .8px;
+  font-size: .7rem;
+  margin-top: .2vh;
+}
+
+.bottom-bar button:hover,
+.bottom-bar a:hover {
+  color: #2a9d8f;
+}

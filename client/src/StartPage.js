@@ -7,12 +7,16 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './css/app.css';
 import styles from './css/search.module.css';
+import BottomsBar from './components/BottomsBar';
+
 
 function StartPage() {
   
   axios.defaults.withCredentials = true;
 
   const isFirstRender = useRef(true)
+   const searchInputRef = useRef(null);
+
   const [trips, setTrips] = useState([]);
   const [filteredTrips, setFilteredTrips] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -23,6 +27,7 @@ function StartPage() {
   const [addSection, setAddSection] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [lastSearchedQuery, setLastSearchedQuery] = useState('');
+
 
   const LIMIT = 10;
 
@@ -148,6 +153,17 @@ function StartPage() {
   };
 
 
+  const scrollToSearchInput = () => {
+  if (searchInputRef.current) {
+    const offset = -30; // można testowo zmienić na -200
+    const top = searchInputRef.current.getBoundingClientRect().top + window.scrollY + offset;
+
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+};
+
+
+
   return (
     <>
 
@@ -167,14 +183,20 @@ function StartPage() {
 
       {/* ⬇️ to owijamy i nadajemy rozmycie */}
 
+
       <div className={`mainContent ${addSection ? 'blurred' : ''}`}>
+      
+        <BottomsBar onAddClick={() => setAddSection(true)} onSearchClick={scrollToSearchInput} />
+
         <h1 className="h1-header" aria-label="Górska Podwózka">GórskaPodwózka</h1>
+
         <p className="sub-header">
           Jedziesz w góry? Znajdź przejazd lub dodaj swój i zabierz kogoś !
         </p>
+
         <button className="btn" onClick={() => setAddSection(true)}>Dodaj Przejazd</button>
 
-        <div className={styles.sectionSearchTrip}>
+        <div className={styles.sectionSearchTrip} ref={searchInputRef}>
           <p>Wyszukiwarka po miejscowośći</p>
           <SearchTrip query={searchQuery} setQuery={setSearchQuery} handleFocus={handleFocus}  />
         </div>
@@ -189,6 +211,8 @@ function StartPage() {
             loading={loadingMore}
           />
         )}
+
+           
 
         {!loading &&
           isSearching &&
@@ -207,7 +231,11 @@ function StartPage() {
       {addSection && (
         <TripAdd fetchTrips={fetchTrips} handleCloseForm={() => setAddSection(false)} />
       )}
+
+
+
     </div>
+
 
   
   </>

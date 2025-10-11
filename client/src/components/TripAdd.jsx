@@ -10,6 +10,7 @@ function TripAdd({ fetchTrips, handleCloseForm }) {
   const [showMiddleInput, setShowMiddleInput] = useState(false)
   const [step, setStep] = useState(1) // 1: Trasa, 2: Szczegóły, 3: Użytkownik
   const [textAreaIsFocused, setTextAreaIsFocused] = useState(false);
+  const [agreeToPrivacy, setAgreeToPrivacy] = useState(false);
   const nodeRef = useRef(null) // 🔧 KLUCZ
 
   const [cityInput, setCityInput] = useState("")
@@ -385,14 +386,34 @@ function TripAdd({ fetchTrips, handleCloseForm }) {
                       </div>
                     </div>
 
-                    <div className={styles['btn-accept-trip-wrapper']}>
-                      <button
-                        type="submit"
-                        className={`${styles.btn} ${styles['btn-accept-form']} ${isFormValid ? styles.show : styles.hide}`}
-                        disabled={!isFormValid}
-                      >
-                        Dodaj przejazd
-                      </button>
+        
+        <div style={{ marginTop: '1rem', textAlign: 'center', display: "flex", alignItems:'start',     }}>
+      
+        <input
+          id='acceptPolicy'
+          type="checkbox"
+          checked={agreeToPrivacy}
+          onChange={() => setAgreeToPrivacy(!agreeToPrivacy)}
+          style={{ marginRight: '0.5rem' }}
+          required
+        />
+        <label htmlFor="acceptPolicy"  
+        style={{ 
+          fontSize: '0.6rem', 
+          cursor: 'pointer',
+        }}>
+        Wyrażam zgodę na przetwarzanie danych osobowych zgodnie z <a href="/info/polityka-prywatnosci-popup" target="_blank" rel="noopener noreferrer">polityką prywatności</a>.
+      </label>
+    </div>
+
+    <div className={styles['btn-accept-trip-wrapper']}>
+      <button
+        type="submit"
+        className={`${styles.btn} ${styles['btn-accept-form']} ${(isFormValid && agreeToPrivacy) ? styles.show : styles.hide}`}
+        disabled={!(isFormValid && agreeToPrivacy)}
+      >
+        Dodaj przejazd
+      </button>
                     </div>
                   </div>
                 )}
