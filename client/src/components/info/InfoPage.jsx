@@ -18,21 +18,27 @@ function InfoPage() {
       </div>
 
       <ul>
-        <li>👤 <Link className={styles.link} to="/info/o-mnie">O mnie</Link></li>
-        <li>📄 <Link className={styles.link} to="/info/regulamin">Regulamin korzystania z serwisu</Link></li>
-        <li>🔒 <Link className={styles.link} to="/info/polityka-prywatnosci">Polityka prywatności</Link></li>
-        <li>📖 <Link className={styles.link} to="/info/transparetnosc">Transparętność platformy</Link></li>
-
+        <li>👤 <Link className={styles.link} to="/info/o-mnie">Trochę o mnie</Link></li>
       </ul>
 
       <p>
          Jeśli spodobała Ci się platforma i chcesz wesprzeć jej rozwój oraz zmotywować mnie bardziej do jej ulepszania możesz <Link to="/info/postaw-kawe" className={styles.infoLinkCoffe}>postawić mi kawę ☕ </Link>
       </p>
 
-       <div className={styles.contactAdmin}>
+      <div className={styles.contactAdmin}>
+        <p><strong>Ważne:</strong></p>
+        <ul style={{marginTop: '0'}}>
+          <li>📄 <Link className={styles.link} to="/info/regulamin">Regulamin korzystania z serwisu</Link></li>
+          <li>🔒 <Link className={styles.link} to="/info/polityka-prywatnosci">Polityka prywatności</Link></li>
+          <li>📖 <Link className={styles.link} to="/info/transparetnosc">Transparętność platformy</Link></li>
+        </ul>
+      </div>
+
+      <div className={styles.contactAdmin} style={{marginTop: '0'}}>
           <p><strong>Kontakt:</strong></p>
           <p>✉️ mateuszek9119@gmail.com</p>
-        </div>
+      </div>
+
 
       <p className={styles.wrapperBackLink}>
         <Link className={styles.backLink} to="/">← Powrót</Link>

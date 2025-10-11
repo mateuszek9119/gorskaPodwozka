@@ -5,6 +5,7 @@ import BottomsBar from '../BottomsBar';
 function AboutMe() {
   return (
     <div className={styles.rulesAndPolicyConteiner}>
+      
       <h3>O mnie</h3>
 
       <p>
@@ -38,7 +39,7 @@ function AboutMe() {
       </p>
 
       <BottomsBar />
-      
+
     </div>
   );
 }

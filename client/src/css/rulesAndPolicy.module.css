@@ -1,6 +1,10 @@
 .rulesAndPolicyConteiner{
   font-family: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
   margin-bottom: 55px;
+
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
 }
 
 .rulesAndPolicyConteiner h3{
@@ -36,13 +40,12 @@
   padding: 14px;
   border-radius: 8px;
   margin-top: 40px;
-  margin-bottom: 30px;
   color: #665c00;
   font-weight: 500
 }
 
 .rulesAndPolicyConteiner ul{
-  margin: 6vh 4%;
+  margin: 4vh 4%;
   list-style: none;
 }
 
@@ -68,7 +71,7 @@
 
 
 .contactAdmin{
-  margin: 45px 0;
+  margin: 4vh 0;
 }
 
 
@@ -85,8 +88,10 @@
 
 
 p.wrapperBackLink{
+  margin-top: 2vh;
+  margin-bottom: 4vh;
   text-align: left;
-  margin-top: 5vh;
+  
 }
 
 .backLink{
@@ -176,10 +181,14 @@ p.wrapperBackLink{
 
 
 p.mycopyright {
+  
+  position: relative;         /* zamiast static, by zachować w przepływie */
+  margin-top: auto;           /* ⬅️ wypycha stopkę na dół */
+
   font-size: 0.8rem;
   color: #fff;
   text-align: center;
-  margin-top: 4vh;
+
   margin-bottom: 0;
   padding: 0.75rem 0;
   background-color: #2a9d8f; /* ładny, spokojny granat */
@@ -191,9 +200,3 @@ p.mycopyright {
 
 
 
-@media (max-width: 400px) {
-
-  .rulesAndPolicyConteiner{
-    margin-bottom: 45px;
-  }
-}
