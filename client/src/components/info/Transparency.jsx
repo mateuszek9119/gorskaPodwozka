@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from '../../css/rulesAndPolicy.module.css'
-import BottomsBar from '../BottomsBar';
+import Bars from '../Bars';
 
 function Transparency() {
   
@@ -32,7 +32,7 @@ function Transparency() {
         </Link>
       </p>
 
-      <BottomsBar />
+      <Bars />
 
     </div>
   );

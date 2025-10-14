@@ -1,7 +1,6 @@
+
 .rulesAndPolicyConteiner{
   font-family: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
-  margin-bottom: 55px;
-
   min-height: 100vh; 
   display: flex;
   flex-direction: column;
@@ -40,6 +39,7 @@
   padding: 14px;
   border-radius: 8px;
   margin-top: 40px;
+  margin-bottom: 40px;
   color: #665c00;
   font-weight: 500
 }
@@ -60,14 +60,11 @@
   border-bottom: 1.2px solid #555;
 }
 
-.infoLinkCoffe{
-  
+.infoLinkCoffe{ 
   color: #2a9d8f; /* ten sam zielony co w przyciskach kawy */
   text-decoration: none;
   transition: all 0.2s ease;
 }
-
-
 
 
 .contactAdmin{
@@ -91,6 +88,7 @@ p.wrapperBackLink{
   margin-top: 2vh;
   margin-bottom: 4vh;
   text-align: left;
+
   
 }
 
@@ -133,7 +131,7 @@ p.wrapperBackLink{
   padding: 10px;
   border-radius: 14px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  background-color: #00A862;
+  background-color: #2a9d8f;
   color: #fff;
   text-decoration: none;
   flex-basis: 30%;
@@ -149,6 +147,7 @@ p.wrapperBackLink{
 .linkCoffeeFull {
   flex-basis: 30%;
   justify-self: center;
+
 }
 
 /* żeby był na środku */
@@ -185,18 +184,62 @@ p.mycopyright {
   position: relative;         /* zamiast static, by zachować w przepływie */
   margin-top: auto;           /* ⬅️ wypycha stopkę na dół */
 
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #fff;
   text-align: center;
 
-  margin-bottom: 0;
-  padding: 0.75rem 0;
+  padding: 1.2rem 0;
   background-color: #2a9d8f; /* ładny, spokojny granat */
   opacity: 0.9;
   width: 100%;
+  height: 50px;
+  box-shadow: 0 -3px 6px rgba(0,0,0,0.15);
   z-index: 10;
-  box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 55px;
 }
 
 
+/* === RESPONSYWNOŚĆ — MOBILE FIRST === */
 
+@media (min-width: 1024px) {
+
+  .rulesAndPolicyConteiner{
+    width: 100%;
+    min-height: 85vh; 
+    margin: 10vh auto 0 auto;
+    padding: 0 10%;
+  }
+
+  .infoLinkCoffe {
+    text-transform: uppercase;
+  }
+
+  .linkCoffeeContainer{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  .linkCoffeeContainer > .linkCoffeeFull{
+      margin-top: 0;
+  }
+
+  .linkCoffee {
+    flex-basis: 20%;
+  }
+
+  p.wrapperBackLink{
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+  }
+
+
+  p.mycopyright {
+    margin-bottom: 0;
+    height: 80px;
+    padding: 2rem 0;
+    font-size: 1rem;
+    
+  }
+ 
+}

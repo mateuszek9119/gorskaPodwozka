@@ -40,7 +40,7 @@ function BottomsBar ({ onAddClick, onSearchClick}){
       }
 
       {(!isMainPage && !isCoffeePage)?(
-             <Link to="/info/postaw-kawe" className={styles.iconButton}>
+      <Link to="/info/postaw-kawe" className={styles.iconButton}>
         <PiCoffeeDuotone size={24}/>
         <span>Wesprzyj</span>
       </Link>

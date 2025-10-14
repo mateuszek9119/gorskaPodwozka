@@ -1,46 +1,50 @@
 import { Link } from 'react-router-dom';
 import styles from '../../css/rulesAndPolicy.module.css';
-import BottomsBar from '../BottomsBar';
+import Bars from '../Bars';
 
 function AboutMe() {
   return (
-    <div className={styles.rulesAndPolicyConteiner}>
+    <>
+      <div className={styles.rulesAndPolicyConteiner}>
       
-      <h3>O mnie</h3>
+        <h3><img src="/logo/logoApp.png" alt="logo" className='logo'  /> O mnie</h3>
 
-      <p>
-        Cześć! Mam na imię Mateusz. Od kilku lat jedną z moich pasji są górskie wędrówki — głównie po Tatrach. Poza tym lubię jeździć na rowerze, biegać i ćwiczyć.
-      </p>
+        <p>
+          Cześć! Mam na imię Mateusz. Od kilku lat jedną z moich pasji są górskie wędrówki — głównie po Tatrach. Poza tym lubię jeździć na rowerze, biegać i ćwiczyć.
+        </p>
 
-      <p>
-        Pomyślałem o stworzeniu tej platformy, aby ułatwić ludziom wspólne podróże w góry — bez rejestracji, bez aplikacji, prosto i wygodnie.
-      </p>
+        <p>
+          Pomyślałem o stworzeniu tej platformy, aby ułatwić ludziom wspólne podróże w góry — bez rejestracji, tanio, prosto i wygodnie.
+        </p>
 
-      <p>
-        W planach mam rozbudowę strony m.in. o możliwość wspólnego umawiania się na szlak i inne ciekawe funkcje.
-      </p>
+        <p>
+          W planach mam rozbudowę strony m.in. o możliwość wspólnego umawiania się na szlak i inne ciekawe funkcje.
+        </p>
 
-      <p>
-        Jeśli chcesz mnie zmotywować do dalszego rozwoju projektu, możesz postawić mi kawę ☕ — będzie mi bardzo miło!
-      </p>
+        <p>
+          Jeśli chcesz mnie zmotywować do dalszego rozwoju projektu, możesz postawić mi kawę ☕ — będzie mi bardzo miło!
+        </p>
 
-      <div className={styles.contactAdmin}>
-        <p><strong>Kontakt:</strong></p>
-        <p>📸 @ma_te_uusz</p>
-        <p>✉️ mateuszek9119@gmail.com</p>
+        <div className={styles.contactAdmin}>
+          <p><strong>Kontakt:</strong></p>
+          <p>📸 @ma_te_uusz</p>
+          <p>✉️ mateuszek9119@gmail.com</p>
+        </div>
+
+        <p className={styles.wrapperBackLink}>
+          <Link className={styles.backLink} to="/info">← Powrót</Link>
+        </p>
+
       </div>
 
-       <p className={styles.wrapperBackLink}>
-        <Link className={styles.backLink} to="/info">← Powrót</Link>
-      </p>
-        
       <p className={styles.mycopyright}>
-        © 2025 GórskaPodwózka — wszystkie prawa zastrzeżone. Projekt i realizacja: Mateusz
+        © 2025 GórskaPodwózka — wszystkie prawa zastrzeżone. Autor: Mateusz
       </p>
 
-      <BottomsBar />
+      <Bars />
 
-    </div>
+    </>
+    
   );
 }
 

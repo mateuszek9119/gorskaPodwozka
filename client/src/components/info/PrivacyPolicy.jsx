@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BottomsBar from '../BottomsBar';
 import styles from '../../css/rulesAndPolicy.module.css'
+import Bars from '../Bars';
 
 const PrivacyPolicy = () => {
   
@@ -47,7 +47,7 @@ const PrivacyPolicy = () => {
       </p>
 
 
-      <BottomsBar/>
+      <Bars />
 
     </div>
 

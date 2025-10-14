@@ -47,122 +47,133 @@ function TripsDisplay({ trips = [], loadMore, hasMore, loading, isAdmin = false,
         return (
 
           <div className="tripContainer"  key={trip.id}>
-
             
-            <div className="trip-route">
-                
-              {cityList.map((city, index) => (
-                <span key={index} className="trip-city">
-                  {city}
-                  {index !== cityList.length - 1 && <span className="arrow">→</span>}
-                </span>
-              ))}
-            </div>
+            <section className='section-one'>
 
+              <div className="trip-route">
+                  
+                {cityList.map((city, index) => (
+                  <span key={index} className="trip-city">
+                    {city}
+                    {index !== cityList.length - 1 && <span className="arrow">→</span>}
+                  </span>
+                ))}
 
-            {!isAdmin && (
-              <div className="user">
-                
-                <div className="userImageWrapper" onClick={() => toggleZoom(trip.id)}>
-                  <img
-                    src={trip.imgPath.replace('/upload/', '/upload/w_400,f_auto,q_auto/')}
-                    alt={trip.userName}
-                    className="userImage"
-                    loading="lazy"
-                  />
+              </div>
+
+            </section>
+
+            <section className='section-two'>
+
+              {!isAdmin && (
+                <div className="user">
+                  
+                  <div className="userImageWrapper" onClick={() => toggleZoom(trip.id)}>
+                    <img
+                      src={trip.imgPath.replace('/upload/', '/upload/w_400,f_auto,q_auto/')}
+                      alt={trip.userName}
+                      className="userImage"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <p className="userName">{trip.userName}</p>
+
+                  {zoomedTripId === trip.id && (
+                    <div className="zoomedOverlay" onClick={handleOutsideClick}>
+                      <div
+                        className="zoomedImage"
+                        style={{ 
+                          backgroundImage: `url(${trip.imgPath.replace('/upload/', '/upload/w_1200,f_auto,q_auto/')})`,
+                        }}
+                        onClick={(e) => e.stopPropagation()}
+                      ></div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div className="trip-dates">
+                <p>🗓️ <strong>Wyjazd:</strong> {dateStart}</p>
+                <p>🗓️ <strong>Powrót:</strong> {dateEnd}</p>
+              </div>
+
+            </section>
+
+            <section className='section-three'>
+            
+              <div className='contactSection'>
+
+                <p
+                  className="toggle-contact"
+                  onClick={() =>
+                    setShowContact(prev => ({
+                      ...prev,
+                      [trip.id]: !prev[trip.id],
+                    }))
+                  }
+                >   
+                  {showContact[trip.id] ? 
+                  <span>
+                    <strong>🔗 Kontakt </strong> <span className='btnShowHideTxt'> zwiń ▲</span> 
+                  </span> 
+                  : 
+                  <span>
+                    <strong>🔗 Kontakt </strong> <span className='btnShowHideTxt'> rozwiń ▼ </span>
+                  </span> 
+                  }
+                </p>
+
+                <div className={`trip-contact ${showContact[trip.id] ? 'show' : ''}`}>
+                  {trip.contactPhone && <p><span><FaWhatsapp color="#25D366" size={18} /> </span><strong>{trip.contactPhone}</strong></p>}
+                  {trip.contactInsta && <p><span><FaInstagram color="#E1306C" size={18} /></span><strong>@{trip.contactInsta.replace(/^@/, '')}</strong></p>}
+                  {trip.contactMessenger && 
+                  <p>
+                      <span>
+                        <FaFacebookMessenger color="#00B2FF" size={18} /> 
+                      </span>
+                      <strong>{trip.contactMessenger}</strong>
+                  </p>}
                 </div>
 
-                <p className="userName">{trip.userName}</p>
-
-                {zoomedTripId === trip.id && (
-                  <div className="zoomedOverlay" onClick={handleOutsideClick}>
-                    <div
-                      className="zoomedImage"
-                      style={{ 
-                        backgroundImage: `url(${trip.imgPath.replace('/upload/', '/upload/w_1200,f_auto,q_auto/')})`,
-                       }}
-                      onClick={(e) => e.stopPropagation()}
-                    ></div>
-                  </div>
-                )}
               </div>
-            )}
 
-            <div className="trip-dates">
-              <p>🗓️ <strong>Wyjazd:</strong> {dateStart}</p>
-              <p>🗓️ <strong>Powrót:</strong> {dateEnd}</p>
-            </div>
+              <div className="trip-description-inline">
 
-
-
-     
-            <div className="trip-description-inline">
-
-              <p
-                className="toggle-description"
-                onClick={() =>
-                  setShowDescription(prev => ({
-                    ...prev,
-                    [trip.id]: !prev[trip.id],
-                  }))
-                }
-              >
-                { trip.description ? (
-                <>
-                {showDescription[trip.id] ? 
-                <span>
-                  <strong>📝 Opis wyjazdu </strong> <span className='btnShowHideTxt'>zwiń ▲</span>
-                </span>  
-                : 
-                <span>
-                  <strong>📝 Opis wyjazdu </strong> <span className='btnShowHideTxt'>rozwiń ▼</span>
-                </span>
-                }</>
-              ):(<>
-              <span>
-                  <strong>📝 Opis wyjazdu </strong> <span className='btnShowHideTxt'>brak</span>
-                </span>
-              </>)}
-              </p>
-              
-              <div className={`description ${showDescription[trip.id] ? 'show' : ''}`}>
-                {trip.description}
-              </div> 
-
-            </div>
-           
-
-            <p
-              className="toggle-contact"
-              onClick={() =>
-                setShowContact(prev => ({
-                  ...prev,
-                  [trip.id]: !prev[trip.id],
-                }))
-              }
-            >   
-              {showContact[trip.id] ? 
-              <span>
-                <strong>🔗 Kontakt </strong> <span className='btnShowHideTxt'> zwiń ▲</span> 
-              </span> 
-              : 
-              <span>
-                <strong>🔗 Kontakt </strong> <span className='btnShowHideTxt'> rozwiń ▼ </span>
-              </span> 
-              }
-            </p>
-
-            <div className={`trip-contact ${showContact[trip.id] ? 'show' : ''}`}>
-              {trip.contactPhone && <p><span><FaWhatsapp color="#25D366" size={18} /> </span><strong>{trip.contactPhone}</strong></p>}
-              {trip.contactInsta && <p><span><FaInstagram color="#E1306C" size={18} /></span><strong>@{trip.contactInsta.replace(/^@/, '')}</strong></p>}
-              {trip.contactMessenger && 
-              <p>
+                <p
+                  className="toggle-description"
+                  onClick={() =>
+                    setShowDescription(prev => ({
+                      ...prev,
+                      [trip.id]: !prev[trip.id],
+                    }))
+                  }
+                >
+                  { trip.description ? (
+                  <>
+                  {showDescription[trip.id] ? 
                   <span>
-                    <FaFacebookMessenger color="#00B2FF" size={18} /> 
+                    <strong>📝 Opis wyjazdu </strong> <span className='btnShowHideTxt'>zwiń ▲</span>
+                  </span>  
+                  : 
+                  <span>
+                    <strong>📝 Opis wyjazdu </strong> <span className='btnShowHideTxt'>rozwiń ▼</span>
                   </span>
-                  <strong>{trip.contactMessenger}</strong>
-              </p>}
-            </div>
+                  }</>
+                ):(<>
+                <span>
+                    <strong>📝 Opis wyjazdu </strong> <span className='btnShowHideTxt'>brak</span>
+                  </span>
+                </>)}
+                </p>
+                
+                <div className={`description ${showDescription[trip.id] ? 'show' : ''}`}>
+                  {trip.description}
+                </div> 
+
+              </div>
+
+            </section>
 
             {isAdmin && <button onClick={() => handleDeleteTrip(trip.id)}>Usuń przejazd</button>}
           

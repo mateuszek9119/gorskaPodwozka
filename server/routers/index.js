@@ -70,7 +70,7 @@ router.post("/upload", upload.single('img'), async (req, res) => {
       dateStartTrip: req.body.dateStartTrip,
       dateEndTrip: req.body.dateEndTrip,
       userName: req.body.userName,
-      imgPath: req.file.path,
+      imgPath: req.file.path, // 🔁 To jest link do zdjęcia w Cloudinary
       contentType: req.file.mimetype,
       contactPhone: req.body.contactPhone,
       contactInsta: req.body.contactInsta,
@@ -87,6 +87,7 @@ router.post("/upload", upload.single('img'), async (req, res) => {
 
 // POST /api/log (logowanie admin)
 router.post('/log', (req, res) => {
+ 
   const { login, password } = req.body;
 
   if (login === process.env.ADMIN_USER && password === process.env.ADMIN_PASS) {

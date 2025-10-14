@@ -7,15 +7,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './css/app.css';
 import styles from './css/search.module.css';
-import BottomsBar from './components/BottomsBar';
+import Bars from './components/Bars';
 
 
 function StartPage() {
   
   axios.defaults.withCredentials = true;
 
+  const LIMIT = 10;
+
   const isFirstRender = useRef(true)
-   const searchInputRef = useRef(null);
+  const searchInputRef = useRef(null);
 
   const [trips, setTrips] = useState([]);
   const [filteredTrips, setFilteredTrips] = useState([]);
@@ -29,7 +31,7 @@ function StartPage() {
   const [lastSearchedQuery, setLastSearchedQuery] = useState('');
 
 
-  const LIMIT = 10;
+
 
   const fetchTrips = async () => {
 
@@ -162,22 +164,23 @@ function StartPage() {
   }
 };
 
+  
 
 
   return (
     <>
 
- <ToastContainer
-  position="top-right"    // Toast wyświetla się na górze
-  autoClose={2000}
-  hideProgressBar={true}
-  limit={3}
-  style={{
-    marginTop: '28vh',
-    zIndex: 9999,         // Upewniamy się, że toast jest na wierzchu
-    pointerEvents: 'none', // Upewniamy się, że toast nie blokuje interakcji
-  }}
-/>
+      <ToastContainer
+        position="top-right"    // Toast wyświetla się na górze
+        autoClose={2000}
+        hideProgressBar={true}
+        limit={3}
+        style={{
+          marginTop: '28vh',
+          zIndex: 9999,         // Upewniamy się, że toast jest na wierzchu
+          pointerEvents: 'none', // Upewniamy się, że toast nie blokuje interakcji
+        }}
+      />
      
     <div className="container" >
 
@@ -185,23 +188,26 @@ function StartPage() {
 
 
       <div className={`mainContent ${addSection ? 'blurred' : ''}`}>
+
+      <Bars onAddClick={() => setAddSection(true)} onSearchClick={scrollToSearchInput} />
       
-        <BottomsBar onAddClick={() => setAddSection(true)} onSearchClick={scrollToSearchInput} />
 
 
-        <h1 className="h1-header userSelectNone"  aria-label="Górska Podwózka"> 
-          <img src="/logo/logoApp.png" alt="logo"  className="logo"  />  
-          GórskaPodwózka
+        <h1 className="h1-header userSelectNone"  aria-label="Górska Podwózka">
+       
+            <img src="/logo/logoApp.png" alt="logo"  className="logo"  />  
+            GórskaPodwózka
+                   
         </h1>
 
-        <p className="sub-header">
+        <p className="sub-header userSelectNone">
           Jedziesz w góry? Znajdź przejazd lub dodaj swój i zabierz kogoś !
         </p>
 
         <button className="btn" onClick={() => setAddSection(true)}>Dodaj Przejazd</button>
 
         <div className={styles.sectionSearchTrip} ref={searchInputRef}>
-          <p>Wyszukiwarka po miejscowośći</p>
+          <p className='userSelectNone'>Wyszukiwarka po miejscowośći</p>
           <SearchTrip query={searchQuery} setQuery={setSearchQuery} handleFocus={handleFocus}  />
         </div>
         
@@ -235,8 +241,6 @@ function StartPage() {
       {addSection && (
         <TripAdd fetchTrips={fetchTrips} handleCloseForm={() => setAddSection(false)} />
       )}
-
-
 
     </div>
 

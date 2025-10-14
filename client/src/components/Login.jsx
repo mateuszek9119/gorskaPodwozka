@@ -42,17 +42,19 @@ function Login() {
 
 
   return (  
-    <div className="container">
+    <div className="containerAdmin">
       
-      <h1>Panel Logowania</h1>
+      <h1 style={{color: '#2a9d8f'}}>Panel Logowania</h1>
 
-      <form action="post">
+      <img src="/logo/logo2.png" alt="logo" width={200} height={'auto'}  />
+
+      <form className='formAdmin' action="post">
         
-        <label htmlFor="">Login</label>
-        <input type="text" name="login" onChange={handleChangeLogin} />
         
-        <label htmlFor="">Password</label>
-        <input type="password" name="password" onChange={handleChangePassword} />
+        <input placeholder='login' type="text" name="login" onChange={handleChangeLogin} />
+        
+        
+        <input placeholder='password' type="password" name="password" onChange={handleChangePassword} />
 
         <input type="submit" onClick={handleClick} value="Zaloguj" />
 

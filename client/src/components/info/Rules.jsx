@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import BottomsBar from '../BottomsBar';
 import styles from '../../css/rulesAndPolicy.module.css'
+import Bars from '../Bars';
 
 function Rules( ) {
 
@@ -32,7 +32,7 @@ function Rules( ) {
         </Link>
       </p>
 
-      <BottomsBar />
+      <Bars />
 
     </div>
   );

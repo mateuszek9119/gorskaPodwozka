@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import TripsDisplay from './TripsDisplay'
+import '../css/app.css'
 
 
 function AdminPanel({isAdmin}){

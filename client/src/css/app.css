@@ -30,6 +30,25 @@ body {
   text-align: center;
 }
 
+.containerAdmin{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  height: 50vh;
+}
+
+.formAdmin{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items:center;
+  width: 100%;
+  height: 20vh;
+}
+
 
 .mainContent {
   transition: filter 0.3s ease, opacity 0.3s ease;
@@ -264,6 +283,7 @@ p strong {
 
 /* Description */
 
+
 div.trip-description-inline {
   margin: .4em 0;
   font-size: 0.9rem;
@@ -279,7 +299,6 @@ div.trip-description-inline {
 
 
 .description{
-  margin-left: 1.4rem;
   letter-spacing: .5px;
   color: #333;
   max-height: 0;
@@ -287,10 +306,11 @@ div.trip-description-inline {
   margin-bottom: 2.5vh;
   overflow: hidden;
   opacity: 0;
-   transition: max-height 1.4s ease, opacity 1.3s ease;
+  transition: max-height 1.4s ease, opacity 1.3s ease;
 }
 
 .description.show {
+  
   max-height: 200px;
   opacity: 1;
 }
@@ -408,10 +428,13 @@ span span.btnShowHideTxt{
     width: 85%;
   }
 
-  .userImage {
-    width: 5rem;
-    height: 5rem;
+  .userImageWrapper{
+    width: 6rem;
+    height: 6rem;
+    margin: 1.2rem 1rem 1.2rem .4rem;
   }
+
+ 
 
   .btn {
     font-size: 1.1rem;
@@ -424,15 +447,12 @@ span span.btnShowHideTxt{
 
 /* 💻 Desktop */
 @media (min-width: 1024px) {
+  
   .container {
     display: flex;
     justify-content: center;
     align-self: center;
-    width: 100%;
-  }
-
-  .mainContent {
-    width: 80%;
+    width: 60%;
   }
 
   .trip-route {
@@ -440,12 +460,34 @@ span span.btnShowHideTxt{
   }
 
   .tripContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tripContainer section {
+    display: flex; 
+    align-items: center;
+    justify-content: start;
+    gap: 10%
+  }
+
+
+  .tripContainer {
     min-height: 160px;
   }
 
-  .userImage {
-    width: 6rem;
-    height: 6rem;
+  .user{
+    padding-bottom: 4.6px;
+  }
+
+  .userImageWrapper{
+    width: 8rem;
+    height: 8rem;
+    margin: 1.4rem 1.8rem 1.4rem 1rem;
+  }
+
+  p.userName{
+    font-size: 1.1rem;
   }
 
   .btn {
@@ -459,6 +501,7 @@ span span.btnShowHideTxt{
   .toggle-contact:hover {
     color: #21867a;
   }
+
 }
 
 

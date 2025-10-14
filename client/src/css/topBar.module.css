@@ -1,0 +1,36 @@
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: #fdfdfb;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.15);
+  
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px 0;
+  z-index: 1000;
+}
+
+
+.top-bar-link {
+  display: flex;
+  align-items: center;
+  color: #2a9d8f;
+  text-decoration: none;
+}
+
+
+.top-bar-link:hover{
+  color: #666;
+  border-bottom: 1px solid #666;
+}
+
+.top-bar-link:first-child:hover{
+  color: #2a9d8f;
+  border-bottom: none;
+}
+
