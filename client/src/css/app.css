@@ -453,6 +453,7 @@ span span.btnShowHideTxt{
     justify-content: center;
     align-self: center;
     width: 60%;
+    margin-top: 2vh;
   }
 
   .trip-route {
